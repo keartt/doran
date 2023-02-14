@@ -1,14 +1,18 @@
-import logo from './logo.svg';
+import { Route, Routes } from "react-router";
+import Test from "./pages/Test";
+import AddTree from "./pages/AddTree";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>도란도란 빙글빙글</p>
-      </header>
+      
+      <Routes>
+        <Route path="/" element={<Test/>}/>
+        <Route path="AddTree" element={<AddTree/>}/>
+      </Routes>
     </div>
+    
   );
 }
 

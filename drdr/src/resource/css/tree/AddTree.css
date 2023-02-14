@@ -1,0 +1,22 @@
+.treeTop{
+    height: 10vh;
+}
+
+.treeCenter{
+    background-color: white;
+    width: 40%;
+    height: 80vh;
+    margin:  auto;
+    padding: 1em;
+}
+
+.treeHeader{
+    margin-top: 1em;
+    text-align: left;
+}
+
+
+.treeBottom{
+    height: 10vh;
+    background-color: #F6F6F6;
+}
