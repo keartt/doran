@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import Test from "./pages/Test";
-import AddTree from "./pages/AddTree";
+import AddTree from "./pages/tree/AddTree";
 import './App.css';
 
 function App() {
