@@ -3,6 +3,7 @@ import Test from "./pages/Test";
 import AddTree from "./pages/tree/AddTree";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Home from "./pages/tree/home";
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="Login" element={<Login/>}/>
         <Route path="Signup" element={<Signup/>}/>
         <Route path="AddTree" element={<AddTree/>}/>
+        <Route path="Home" element={<Home/>}/>
       </Routes>
     </div>
     
