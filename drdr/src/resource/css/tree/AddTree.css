@@ -1,22 +1,54 @@
-.treeTop{
-    height: 10vh;
+.treeContainer{
+    height: 100vh;
 }
 
 .treeCenter{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 3px 3px 6px rgba(0,0,0,0.23);
+    border-radius: 25px;
     background-color: white;
     width: 40%;
-    height: 80vh;
-    margin:  auto;
-    padding: 1em;
+    height: 90vh;
+    margin:  5em auto;
+    padding: 1px;
 }
 
 .treeHeader{
-    margin-top: 1em;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    font-weight: 900;
 }
 
 
-.treeBottom{
-    height: 10vh;
-    background-color: #F6F6F6;
+a{
+    color: black;
+    text-decoration: none;
 }
+
+
+a:hover{
+    color: #CEF6CE;
+    text-decoration: none;
+}
+
+
+.treeMain{
+    margin: 2em;
+}
+
+
+#standard-required{
+    width: 100%;
+    font-family: 'GmarketSansMedium';
+}
+
+#standard-required-label{
+    font-family: 'GmarketSansMedium';
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
