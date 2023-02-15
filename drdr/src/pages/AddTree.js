@@ -12,7 +12,7 @@ function AddTree() {
       <div className='treeCenter'>
         <div className='treeHeader'>
 
-          <a id="a1" href="/AddTree">도란도란</a>
+          <a id="a1" href="/">도란도란</a>
           <a id="a2" href="/">x</a>
 
         </div>
