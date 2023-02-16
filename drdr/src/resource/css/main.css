@@ -1,5 +1,5 @@
 .mainContainer{
-    height: 100vh;
+    height: 100%;
 }
 
 .mainCenter{
@@ -7,7 +7,7 @@
     border-radius: 25px;
     background-color: white;
     width: 40%;
-    height: 90vh;
+    height: 100%;
     margin:  5em auto;
     padding: 1px;
 }
@@ -27,13 +27,8 @@ a{
 
 
 a:hover{
-    color: #FF8000;
+    color: #FE9A2E;
     text-decoration: none;
-}
-
-
-.divMain{
-    margin: 2em;
 }
 
 

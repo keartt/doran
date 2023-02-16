@@ -1,4 +1,4 @@
-.treeContainer{
+/* .treeContainer{
     height: 100%;
 }
 
@@ -10,14 +10,8 @@
     height: 100%;
     margin:  5em auto;
     padding: 1px;
-}
+} */
 
-.treeHeader{
-    display: flex;
-    justify-content: space-between;
-    margin: 2em;
-    font-weight: 900;
-}
 
 
 a{
@@ -31,10 +25,6 @@ a{
     margin-bottom: 5em;
 }
 
-a:hover{
-    color: #1976d2;
-    text-decoration: none;
-}
 
 #standard-required{
     font-size: 12px;
@@ -47,8 +37,7 @@ a:hover{
 }
 
 #btnCreate{
-    background-color:#FAF4C0;
-    color: black;
+    background-color:#FE9A2E;
     font-family: 'GmarketSansMedium';
     border-radius: 25px;
     width: 100%;
@@ -66,9 +55,3 @@ a:hover{
 #demo-row-radio-buttons-group-label{
     font-family: 'GmarketSansMedium';
 }
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }

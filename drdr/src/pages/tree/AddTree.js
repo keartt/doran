@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../resource/css/tree/AddTree.css';
+import '../../resource/css/main.css';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -48,11 +49,11 @@ function AddTree() {
   const [value, setValue] = React.useState(null);
 
   return (
-    <div className="treeContainer">
+    <div className="mainContainer">
 
 
 
-      <div className='treeCenter'>
+      <div className='mainCenter'>
 
         <Header />
 
