@@ -1,3 +1,18 @@
+.loginContainer{
+    height: 100%;
+}
+
+.loginCenter{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 3px 3px 6px rgba(0,0,0,0.23);
+    border-radius: 25px;
+    background-color: white;
+    width: 40%;
+    height: 100%;
+    margin:  5em auto;
+    padding: 1px;
+}
+
+
 #btnLogin{
     font-family: 'GmarketSansMedium';
     border-radius: 25px;

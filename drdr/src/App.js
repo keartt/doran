@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
 import Test from "./pages/Test";
 import AddTree from "./pages/tree/AddTree";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/member/Login";
+import Signup from "./pages/member/Signup";
 import Home from "./pages/tree/home";
 import './App.css';
 

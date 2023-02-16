@@ -1,0 +1,27 @@
+.SignupContainer{
+    height: 100%;
+}
+
+.SignupCenter{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 3px 3px 6px rgba(0,0,0,0.23);
+    border-radius: 25px;
+    background-color: white;
+    width: 40%;
+    height: 100%;
+    margin:  5em auto;
+    padding: 1px;
+}
+
+
+#btnSignup{
+    font-family: 'GmarketSansMedium';
+    border-radius: 25px;
+}
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
