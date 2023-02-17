@@ -32,7 +32,7 @@ const theme = createTheme({
 const theme2 = createTheme({
   typography: {
     fontFamily: "GmarketSansMedium",
-    fontSize: 12
+    fontSize: '12px'
   }
 })
 

@@ -3,16 +3,24 @@ import Header from '../fragment/header';
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddCarrot.css';
 import Grid from '@mui/material/Grid';
-import img1 from '../../resource/img/1.jpg';
+
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
-
+import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from "@mui/material";
+import r1 from '../../resource/img/r1.png';
+import r2 from '../../resource/img/r2.png';
+import r3 from '../../resource/img/r3.png';
+import r4 from '../../resource/img/r4.png';
+import r5 from '../../resource/img/r5.png';
 
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+// import Slider from "react-slick";
+
+
 
 import styled from "@emotion/styled";
 const Image = styled.img`
@@ -23,20 +31,33 @@ const Image = styled.img`
 
 const theme = createTheme({
   typography: {
-    fontFamily: "GmarketSansMedium"
+    fontFamily: 'GmarketSansMedium'
   }
 })
 
 
-function Test() {
+function AddCarrot() {
 
-  var settings = {
-    dots: false, // 캐러셀의 점을 보여줄 것인지
-    infinite: true, // 마지막 장 다음에 첫번째가 나오게 할 것인지
-    speed: 500, // 넘어가는 속도는 몇으로 할 것인지
-    slidesToShow: 1, 
-    slidesToScroll: 1,
-    arrows: true
+  // var state = {
+  //   slideIndex: 0,
+  //   updateCount: 0
+  // };
+
+  // function clicks() {
+
+  //   alert("dd");
+
+  // }
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+    // afterChange: () =>
+    //     this.setState(state => ({ updateCount: state.updateCount + 1 })),
+    //   beforeChange: (current, next) => this.setState({ slideIndex: next })
   };
 
   return (
@@ -59,56 +80,56 @@ function Test() {
 
           <div className='carrotMain'>
 
+
+
             <Grid container spacing={2}>
 
+              <Grid item xs={1}></Grid>
+              <Grid item xs={10}>
 
-             <Grid item xs={2}></Grid>
-             <Grid item xs={8}>
+                <div id="slider-div">
 
-             <Slider {...settings}>
-              <div>
-                <Image src={img1} />
-                
-              </div>
-              <div>
-                <h3>2</h3>
-              </div>
-              <div>
-                <h3>3</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
-            </Slider>
+                  {/* <Slider ref={slider => (this.slider = slider)} {...settings}> */}
+                  <Slider {...settings}>
+                    <div>
+                      <Image src={r1} />
+                    </div>
+                    <div>
+                      <Image src={r2} />
+                    </div>
+                    <div>
+                      <Image src={r3} />
+                    </div>
+                    <div>
+                      <Image src={r4} />
+                    </div>
+                    <div>
+                      <Image src={r5} />
+                    </div>
+                  </Slider></div>
 
-
+              </Grid>
 
 
-             </Grid>
-             <Grid item xs={2}></Grid>
+              <Grid item xs={12} >
 
-
-
-
-
+                <TextField id="standard-required" label="| 메시지" fullWidth sx={{
+                  m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                    color: '#FF8000;'
+                  }
+                }} multiline rows={5} variant="standard" />
+              </Grid>
 
             </Grid>
 
 
 
-            
+
 
 
 
 
           </div>
-
 
         </div>
 
@@ -117,4 +138,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default AddCarrot;
