@@ -6,7 +6,7 @@ import Login from "./pages/member/Login";
 import Signup from "./pages/member/Signup";
 import Email from "./pages/member/Email";
 import Pw from "./pages/member/Pw";
-import Home from "./pages/tree/home";
+import Home from "./pages/tree/home.main";
 import './App.css';
 
 function App() {
