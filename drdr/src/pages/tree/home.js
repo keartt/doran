@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../fragment/header';
 import '../../resource/css/main.css';
 import { useState } from "react"
@@ -63,85 +63,87 @@ function Home() {
 }
 
 function Company() {
-  return (
-    <>
-      <IconButton style={{  marginLeft:"5%", marginTop:"3%" , float:"left" }} ><MailOutlineIcon/></IconButton><h3 className='titleName' style={{ marginLeft: "5%"}}>회사 롤링페이퍼!! </h3> 
-      <div style={{  clear :"both" }} ></div>
-      <ThemeProvider theme={theme}>
-        <List sx={{ width: "100%" , bgcolor: "background.paper" }}>
+  // db 에서 이 배열에 넣어주면 댐 
+  const [companys, setCompany] = useState([])
+  // const companys = [{title : "제목", subTitle :"부제목1"},{title : "김영재에게", subTitle :"잘가라"},{title : "알고보니", subTitle :"리액트쌉고수?"}]
 
+  useEffect(() => {
+    const fetchData = async () => {
+      // const response = await fetch('http://localhost:5005/list/company');
+      const response = await fetch('/list/company');
+      const json = await response.json();
+      setCompany(json);
+    };
+    fetchData();
+  }, []);
 
-          <ListItem alignItems="flex-start" >
-            <ListItemText
-              primary="김영재에게 하고 싶었던 말"
-              secondary={
-                <React.Fragment>
-                  {"대전으로 떠나는 그에게..."}
-                </React.Fragment>
-              }
-            /> <IconButton style={{width:"25%"}}><CreateIcon/></IconButton>
-          </ListItem>
-           
-         
-
-          
-
-        </List>
-      </ThemeProvider>
-    </>
+  const companyList = companys.map((company, i) =>
+    <List sx={{ width: "100%", bgcolor: "background.paper" }} key={i}>
+      <ListItem alignItems="flex-start" >
+        <ListItemText
+          primary={company.title}
+          secondary={<React.Fragment>  {company.subTitle}  </React.Fragment>} />
+        <IconButton style={{ width: "25%" }}><CreateIcon /></IconButton>
+      </ListItem>
+    </List>
   )
+
+  return <>
+    <IconButton style={{ marginLeft: "5%", marginTop: "3%", float: "left" }} ><MailOutlineIcon /></IconButton><h3 className='titleName' style={{ marginLeft: "5%" }}>회사 롤링페이퍼!! </h3>
+    <div style={{ clear: "both" }} ></div>
+    <ThemeProvider theme={theme}>
+      {companyList}
+    </ThemeProvider>
+  </>
 }
 
+
+
+
 function Department() {
-  return (
-    <>
-      <IconButton style={{  marginLeft:"5%", marginTop:"3%" , float:"left" }} ><MailOutlineIcon/></IconButton><h3 className='titleName' style={{ marginLeft: "5%"}}>부서 롤링페이퍼!! </h3> 
-      <ThemeProvider theme={theme}>
-        <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-          
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary="홍길동동"
-              secondary={
-                <React.Fragment>
-                  {"ㅇ~ㅇㅇ"}
-                </React.Fragment>
-              }
-            /><IconButton style={{width:"25%"}}><CreateIcon/></IconButton>
-          </ListItem>
-
-          
-
-        </List>
-      </ThemeProvider>
-
-    </>
+  // db 에서 이 배열에 넣어주면 댐 
+  const companys = [{ title: "부서", subTitle: "부서목" }, { title: "알고보니", subTitle: "리액트쌉고수?" }]
+  const companyList = companys.map((company, i) =>
+    <List sx={{ width: "100%", bgcolor: "background.paper" }} key={i}>
+      <ListItem alignItems="flex-start" >
+        <ListItemText
+          primary={company.title}
+          secondary={<React.Fragment>  {company.subTitle}  </React.Fragment>} />
+        <IconButton style={{ width: "25%" }}><CreateIcon /></IconButton>
+      </ListItem>
+    </List>
   )
+  return <>
+    <IconButton style={{ marginLeft: "5%", marginTop: "3%", float: "left" }} ><MailOutlineIcon /></IconButton><h3 className='titleName' style={{ marginLeft: "5%" }}>부서 롤링페이퍼!! </h3>
+    <div style={{ clear: "both" }} ></div>
+    <ThemeProvider theme={theme}>
+      {companyList}
+    </ThemeProvider>
+  </>
 }
 
 function My() {
-  return (
-    <>
-      <h3 className='titleName' style={{ textAlign: "right", marginRight: "8%" }}>마이페이지</h3>
-      <ThemeProvider theme={theme}>
-        <List sx={{ width: "100%" , bgcolor: "background.paper" }}>
-           
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary="홍길동동2"
-              secondary={
-                <React.Fragment>
-                  {"ㅇ~ㅇ1122ㅇ"}
-                </React.Fragment>
-              }
-            /><IconButton style={{width:"25%"}}><CreateIcon/></IconButton>
-          </ListItem> 
+  <h3 className='titleName' style={{ textAlign: "right", marginRight: "8%" }}>마이페이지</h3>
+  // db 에서 이 배열에 넣어주면 댐 
+  const companys = [{ title: "마이", subTitle: "페이지" }, { title: "알고보니", subTitle: "노드 쌉고수?" }]
 
-        </List>
-      </ThemeProvider>
-    
-    </>
+  const companyList = companys.map((company, i) =>
+    <List sx={{ width: "100%", bgcolor: "background.paper" }} key={i}>
+      <ListItem alignItems="flex-start" >
+        <ListItemText
+          primary={company.title}
+          secondary={<React.Fragment>  {company.subTitle}  </React.Fragment>} />
+        <IconButton style={{ width: "25%" }}><CreateIcon /></IconButton>
+      </ListItem>
+    </List>
   )
+  return <>
+    <h3 className='titleName' style={{ textAlign: "right", marginRight: "8%" }}>마이페이지</h3>
+    <div style={{ clear: "both" }} ></div>
+    <ThemeProvider theme={theme}>
+      {companyList}
+    </ThemeProvider>
+  </>
 }
 
 export default Home;
