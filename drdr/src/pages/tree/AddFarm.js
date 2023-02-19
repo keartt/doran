@@ -23,6 +23,7 @@ import Avatar from '@mui/material/Avatar';
 
 import { createTheme, ThemeProvider } from "@mui/material";
 
+
 const theme = createTheme({
   typography: {
     fontFamily: "GmarketSansMedium"
@@ -31,9 +32,31 @@ const theme = createTheme({
 const theme2 = createTheme({
   typography: {
     fontFamily: "GmarketSansMedium",
-    fontSize: '12px'
   }
 })
+
+var recieverCheck = false;
+
+function clickAddFarm(){
+
+  var title = document.getElementsByName('title');
+  var deadLine = document.getElementsByName('deadLine');
+  var reciever = document.getElementsByName('reciever');
+  var subTitle = document.getElementsByName('subTitle');
+
+  if(recieverCheck === false){
+    alert("수신인 선택해!");
+  }else{
+    
+    alert(title[0].value + " " + deadLine[0].value + " " + reciever[0].value + " " + subTitle[0].vallue);
+    var carrotFrm = document.getElementById('carrotFrm');
+    carrotFrm.submit();
+
+    
+  }
+  
+ // document.getEle
+}
 
 var arrName = ['이기춘', '강성현', '김영재', '이유진', '김상명'];
 var arrId = ['lkc', 'ksh', 'kyj', 'lyj', 'ksm'];
@@ -62,12 +85,19 @@ function renderRow(props) {
   );
 }
 
+function recieverChange(){
+  recieverCheck = false;
+}
+
 function clicks(index) {
-  var name = document.getElementsByName('searchName');
+  var name = document.getElementsByName('reciever');
 
   name[0].defaultValue = " ";
-  //name[0].value = arr[index];
+  name[0].value = arrName[index];
   alert(arrName[index]);
+
+  recieverCheck = true;
+
 }
 
 function AddFarm() {
@@ -86,11 +116,11 @@ function AddFarm() {
           <Header />
 
 
-          <form>
+          <form action='/carrot/insert' id='carrotFrm' method='post'>
             <div className='treeMain'>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <TextField required id="standard-required" fullWidth sx={{
+                  <TextField required id="standard-required" name="title" fullWidth sx={{
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
@@ -104,11 +134,12 @@ function AddFarm() {
                     <DatePicker
                       label="마감일"
                       value={value}
+                      id="deadLine"
                       inputFormat="YYYY-MM-DD"
                       onChange={(newValue) => {
                         setValue(newValue);
                       }}
-                      renderInput={(params) => <TextField required id="standard-required" variant="standard" fullWidth sx={{
+                      renderInput={(params) => <TextField required name ="deadLine" id="standard-required" variant="standard" fullWidth sx={{
                         m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                           color: '#FE9A2E;'
                         }
@@ -119,11 +150,11 @@ function AddFarm() {
 
 
                 <Grid item xs={11}>
-                  <TextField required id="standard-required" name="searchName" fullWidth sx={{
+                  <TextField required id="standard-required" name="reciever" fullWidth sx={{
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
-                  }} label="수신인" defaultValue="" variant="standard" />
+                  }} label="수신인" onChange={() => recieverChange()} defaultValue="" variant="standard" />
                 </Grid>
 
                 <Grid item xs={1}>
@@ -152,7 +183,7 @@ function AddFarm() {
 
                 <Grid item xs={12}>
 
-                  <TextField id="standard-required" label="상세정보" fullWidth sx={{
+                  <TextField id="standard-required" name="subTitle" label="상세정보" fullWidth sx={{
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                       color: '#FF8000;'
                     }
@@ -161,7 +192,7 @@ function AddFarm() {
 
                 <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
-                  <Button variant="contained" id="btnCreate" size="small">
+                  <Button variant="contained" id="btnCreate" size="small" onClick={() => clickAddFarm()}>
                     농장 만들기
                   </Button>
                 </Grid>

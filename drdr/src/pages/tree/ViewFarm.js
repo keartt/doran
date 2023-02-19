@@ -3,7 +3,10 @@ import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import React from 'react';
+
+import React, { useEffect } from 'react';
+import { useState } from "react";
+
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddFarm.css';
 import Header from '../fragment/header';
@@ -21,6 +24,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
+import { Link } from 'react-router-dom';
+
 import { createTheme, ThemeProvider } from "@mui/material";
 
 import styled from "@emotion/styled";
@@ -36,13 +41,61 @@ const theme = createTheme({
   }
 })
 
-function btnAdd(){
-  window.location.href='/AddCarrot'
-}
 
 function ViewFarm() {
 
+  const [farm, setFarm] = useState([])
+    // 세션에 저장된 아이디
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/farm/select', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          }, // json형태의 데이터를 서버로 보냅니다.
+          body: JSON.stringify({
+            title: "title1"
+        })
+      })
+      const json = await response.json();
+
+      setFarm(json);
+    };
+    fetchData();
+  }, []);
+
+
+
+  const farmInfo = farm.map((farm, i) =>
+
+  <>
+
+
+              <Grid item xs={1}>
+                <MailOutlineIcon />
+              </Grid>
+              <Grid item xs={11}>
+                <span id="title">{farm.title}</span>
+              </Grid>
+
+              <Grid item xs={1}>
+                <SentimentSatisfiedAltIcon />
+              </Grid>
+              <Grid item xs={11}>
+                <span id="recipient">{farm.reciever}</span>
+              </Grid>
+
+              <Grid item xs={1}>
+                <ChatBubbleOutlineIcon />
+              </Grid>
+              <Grid item xs={11}>
+                <span id="recipient">{farm.subTitle}</span>
+              </Grid>
+  
+  </>
+
+  )
   return (
 
     <ThemeProvider theme={theme}>
@@ -61,48 +114,50 @@ function ViewFarm() {
 
 
               <Grid item xs={12}>
-              <IconButton onClick={() => btnAdd()} style={{ backgroundColor:'#FF8000', borderRadius:'5px', color: "#FFFFFF", fontFamily: "GmarketSansMedium", fontSize :'15px' }}><ModeEditIcon style={{ color: "#FFFFFF"}} /><span>　작성</span></IconButton>
+              <Link to = "/AddCarrot">
+              <IconButton style={{ backgroundColor:'#FF8000', borderRadius:'5px', color: "#FFFFFF", fontFamily: "GmarketSansMedium", fontSize :'15px' }}><ModeEditIcon style={{ color: "#FFFFFF"}} /><span>　작성</span></IconButton>
+              </Link>
               </Grid>
+
+
+              
               <Grid item xs={12}></Grid>
-              <Grid item xs={1}>
+              {farmInfo}
+
+              {/* <Grid item xs={1}>
                 <MailOutlineIcon />
               </Grid>
               <Grid item xs={11}>
-                <span id="title">제목이다</span>
+                <span id="title">{farm.title}</span>
               </Grid>
 
               <Grid item xs={1}>
                 <SentimentSatisfiedAltIcon />
               </Grid>
               <Grid item xs={11}>
-                <span id="recipient">김영재 (KYJ)</span>
+                <span id="recipient">{farm.reciever}</span>
               </Grid>
 
               <Grid item xs={1}>
                 <ChatBubbleOutlineIcon />
               </Grid>
               <Grid item xs={11}>
-                <span id="recipient">영재님 대전 잘 가세요 영재님 대전 잘 가세요 영재님 대전 잘 가세요영재님 대전 잘 가세요영재님 대전 잘 가세요</span>
-              </Grid>
-
+                <span id="recipient">{farm.subTitle}</span>
+              </Grid> */}
+              
               <Grid item xs={12}></Grid>
               <Grid item xs={12}></Grid>
               <Grid item xs={12}></Grid>
               <Grid item xs={12}></Grid>
 
 
-            </Grid>
-
+</Grid>
             <Grid container spacing={9}>
               <Grid item xs={4}>
                 <Stack justifyContent="center" alignItems="center" spacing={2}>
-
                   <Image src={r3} />
                   <a href='/ViewCarrot'>익명의 토끼</a>
-
                 </Stack>
-
-
               </Grid>
               <Grid item xs={4}>
                 <Stack justifyContent="center" alignItems="center" spacing={2}>
@@ -147,20 +202,8 @@ function ViewFarm() {
 
                 </Stack>
               </Grid>
-
-
             </Grid>
-
-
-
-
           </div>
-
-
-
-
-
-
         </div>
 
       </div>

@@ -2,6 +2,7 @@ var express = require('express')
 var app = express()
 const cors = require('cors');
 const Home = require('./router/home')
+const Farm = require('./router/farm')
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -24,3 +25,5 @@ app.get('/', (req, res) => {
 })
 
 app.use("/list", Home);
+app.use("/farm", Farm);
+
