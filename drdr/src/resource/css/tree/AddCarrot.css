@@ -20,3 +20,7 @@
 .slick-arrow.slick-prev::before, .slick-arrow.slick-next::before{
     color:black;
 }
+
+#anonymous{
+    margin-left: 0.5em;
+}

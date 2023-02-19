@@ -20,7 +20,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import Slider from "react-slick";
 
-
+import Switch from '@mui/material/Switch';
 
 import styled from "@emotion/styled";
 const Image = styled.img`
@@ -35,6 +35,7 @@ const theme = createTheme({
   }
 })
 
+const label = { inputProps: { 'check': 'check' } };
 
 function AddCarrot() {
 
@@ -113,18 +114,22 @@ function AddCarrot() {
 
               <Grid item xs={12} >
 
-                <TextField id="standard-required" label="| 메시지" fullWidth sx={{
-                  m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                <TextField className='test' id="standard-required" label="| 메시지" fullWidth sx={{
+                  m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "label" : {color:'black'}, "& label.Mui-focused": {
                     color: '#FF8000;'
                   }
                 }} multiline rows={5} variant="standard" />
               </Grid>
 
+              <Grid item xs={12} ></Grid>
+              <Grid item xs={12} ><span id="anonymous">| 익명</span></Grid>
+              <Grid item xs={12} ><Switch {...label} defaultChecked color="warning" /></Grid>
+
             </Grid>
 
 
 
-
+            
 
 
 
