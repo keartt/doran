@@ -46,7 +46,9 @@ function My() {
     </List>
   )
   return <>
- <Link to = "/AddFarm/my"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 내 농장!! </h3></Link >
+
+ <Link to = "/작성페이지"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 내 농장!! </h3></Link >
+
     {/* 내가 심은 밭? 당근 개수? 마이페이지 수정?  */}
     <ThemeProvider theme={theme}>
       {farmList}
