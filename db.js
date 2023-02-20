@@ -5,8 +5,8 @@ MongoClient.connect(url, (error, client) => {
   if (error) return console.log('디비 접속 에러')
   console.log("몽고 연결 쌉가능");
 
-  const db = client.db('node_test');
-  module.exports.db = db;
+  const dbCon = client.db('node_test');
+  module.exports.db = dbCon;
 
 })
 

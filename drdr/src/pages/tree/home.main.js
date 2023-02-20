@@ -15,41 +15,42 @@ import Company from './home.company';
 import My from './home.my';
 
 function Home() {
-  const [company, setCompany] = useState(true)
-  const [department, setDepartmet] = useState(false)
-  const [my, setMy] = useState(false)
+  const [activeTab, setActiveTab] = useState('company');
+
+  const handleClick = (tab) => {
+    setActiveTab(tab);
+  }
+
   return (
     <div className="homeContainer">
-
       <div className='homeCenter'>
         <Header />
-
         <div className='divMain'>
-          <IconButton className='iconBtn' onClick={() => {
-            setCompany(true)
-            setDepartmet(false)
-            setMy(false)
-          }}><ApartmentIcon /></IconButton>
-
-          <IconButton className='iconBtn' onClick={() => {
-            setCompany(false)
-            setDepartmet(true)
-            setMy(false)
-          }}><GroupsIcon /></IconButton>
-
-          <IconButton className='iconBtn' onClick={() => {
-            setCompany(false)
-            setDepartmet(false)
-            setMy(true)
-          }}><PersonIcon /></IconButton>
-
-          {company === true ? <Company /> : null}
-          {department === true ? <Department /> : null}
-          {my === true ? <My /> : null}
+          <IconButton 
+            className={`iconBtn ${activeTab === 'company' ? 'active' : ''}`}
+            onClick={() => handleClick('company')}
+          >
+            <ApartmentIcon />
+          </IconButton>
+          <IconButton 
+            className={`iconBtn ${activeTab === 'department' ? 'active' : ''}`}
+            onClick={() => handleClick('department')}
+          >
+            <GroupsIcon />
+          </IconButton>
+          <IconButton 
+            className={`iconBtn ${activeTab === 'my' ? 'active' : ''}`}
+            onClick={() => handleClick('my')}
+          >
+            <PersonIcon />
+          </IconButton>
+          {activeTab === 'company' && <Company />}
+          {activeTab === 'department' && <Department />}
+          {activeTab === 'my' && <My />}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 

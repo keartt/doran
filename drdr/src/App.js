@@ -9,12 +9,14 @@ import Signup from "./pages/member/Signup";
 import Email from "./pages/member/Email";
 import Pw from "./pages/member/Pw";
 import Home from "./pages/tree/home.main";
+
+import AddCarrot2 from "./pages/tree/addCarrot2";
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      
       <Routes>
         <Route path="/" element={<Test/>}/>
         <Route path="Login" element={<Login/>}/>
@@ -25,8 +27,10 @@ function App() {
         <Route path="ViewFarm" element={<ViewFarm/>}/>
         <Route path="AddCarrot" element={<AddCarrot/>}/>
         <Route path="ViewCarrot" element={<ViewCarrot/>}/>
-
         <Route path="Home" element={<Home/>}/>
+
+        <Route path="AddCarrot2" element={<AddCarrot2/>}/>
+        
       </Routes>
     </div>
     
