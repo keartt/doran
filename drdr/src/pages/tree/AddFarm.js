@@ -3,7 +3,9 @@ import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import React from 'react';
+
+import React, { useState } from 'react';
+
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddFarm.css';
 import Header from '../fragment/header';
@@ -29,11 +31,8 @@ const theme = createTheme({
     fontFamily: "GmarketSansMedium"
   }
 })
-const theme2 = createTheme({
-  typography: {
-    fontFamily: "GmarketSansMedium",
-  }
-})
+
+
 
 var recieverCheck = false;
 
@@ -51,11 +50,7 @@ function clickAddFarm(){
     alert(title[0].value + " " + deadLine[0].value + " " + reciever[0].value + " " + subTitle[0].vallue);
     var carrotFrm = document.getElementById('carrotFrm');
     carrotFrm.submit();
-  
-  }
-  
- // document.getEle
-}
+
 
 var arrName = ['이기춘', '강성현', '김영재', '이유진', '김상명'];
 var arrId = ['lkc', 'ksh', 'kyj', 'lyj', 'ksm'];
@@ -63,7 +58,9 @@ function renderRow(props) {
   const { index, style } = props;
 
   return (
-    <ThemeProvider theme={theme2}>
+
+    <ThemeProvider theme={theme}>
+
       <ListItem style={style} key={arrName[index]} value={arrName[index]} component="div" disablePadding onClick={() => clicks(index)}>
        <ListItemButton>
           <Avatar sx={{ marginRight: 2 }}>
@@ -84,9 +81,11 @@ function renderRow(props) {
   );
 }
 
+
 function recieverChange(){
   recieverCheck = false;
 }
+
 
 function clicks(index) {
   var name = document.getElementsByName('reciever');
@@ -100,6 +99,37 @@ function clicks(index) {
 }
 
 function AddFarm() {
+
+
+  const [title, setTitle]  = useState('');
+  const [daedLine, setDaedLine]  = useState('');
+  const [receiver, setReceiver]  = useState('');
+  const [subTitle, setSubTitle]  = useState('');
+  const [recieverCheck, setRecieverCheck] = useState(false);
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDeadLineChange = (event) => {
+    setDaedLine(event.target.value);
+  };
+
+  const handleRecieverChange = (event) => {
+    setReceiver(event.target.value);
+  };
+
+  const handleSubTitleChange = (event) => {
+    setSubTitle(event.target.value);
+  };
+
+  const search = () =>{
+    
+    if(receiver.vallue === null || receiver.vallue === ""){
+      alert("농장 주인을 검색 후 선택해주세요.");
+    }
+  }
+
 
   const [value, setValue] = React.useState(null);
 
@@ -123,7 +153,9 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
-                  }} label="제목" defaultValue="" variant="standard" />
+
+                  }} label="제목" defaultValue="" onChange={handleTitleChange} variant="standard" />
+
                 </Grid>
 
 
@@ -138,7 +170,9 @@ function AddFarm() {
                       onChange={(newValue) => {
                         setValue(newValue);
                       }}
-                      renderInput={(params) => <TextField required name ="deadLine" id="standard-required" variant="standard" fullWidth sx={{
+
+                      renderInput={(params) => <TextField required name ="deadLine" onChange={handleDeadLineChange} id="standard-required" variant="standard" fullWidth sx={{
+
                         m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                           color: '#FE9A2E;'
                         }
@@ -153,12 +187,14 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
-                  }} label="수신인" onChange={() => recieverChange()} defaultValue="" variant="standard" />
+                  }} label="수신인" onChange={handleRecieverChange} defaultValue="" variant="standard" />
+
                 </Grid>
 
                 <Grid item xs={1}>
 
-                  <IconButton variant="contained" id="btnSearch" size="small">
+                  <IconButton variant="contained" id="btnSearch" size="small" onClick={() => search()}>
+
                     <SearchIcon />
                   </IconButton>
                 </Grid>
@@ -186,7 +222,9 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                       color: '#FF8000;'
                     }
-                  }} multiline rows={5} variant="standard" />
+
+                  }} multiline rows={5} onChange={handleSubTitleChange} variant="standard" />
+
                 </Grid>
 
                 <Grid item xs={12}></Grid>
@@ -198,10 +236,6 @@ function AddFarm() {
 
 
               </Grid>
-
-
-
-
 
 
             </div>

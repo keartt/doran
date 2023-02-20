@@ -72,7 +72,10 @@ function AddCarrot() {
 
             <IconButton style={{ backgroundColor: "#F4282F", width: "24px", height: "24px" }}><CloseIcon style={{ color: "white", width: "20px", height: "20px" }} /></IconButton>
             <a id="header1" href="/">도란도란</a>
+
+            <IconButton type="submit" style={{ backgroundColor: "#40FF00", width: "24px", height: "24px" }}><CheckIcon style={{ color: "white", width: "20px", height: "20px" }} /></IconButton>
             <IconButton style={{ backgroundColor: "#40FF00", width: "24px", height: "24px" }}><CheckIcon style={{ color: "white", width: "20px", height: "20px" }} /></IconButton>
+
 
           </div>
 

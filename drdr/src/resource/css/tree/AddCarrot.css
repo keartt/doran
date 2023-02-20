@@ -24,3 +24,13 @@
 #anonymous{
     margin-left: 0.5em;
 }
+
+#btnCarrot{
+    text-align: right;
+    font-family: 'GmarketSansMedium';
+    border: none;
+    font-size: 18px;
+    background-color: white;
+    color: #FF8000;
+}
+

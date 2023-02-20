@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState } from "react";
 import '../../resource/css/main.css';
-// import { Link } from 'react-router-dom';
+
+import '../../resource/css/tree/AddCarrot.css';
+import { Link } from 'react-router-dom';
+
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Header from '../fragment/header';
@@ -15,11 +18,21 @@ import r3 from '../../resource/img/r3.png';
 import r4 from '../../resource/img/r4.png';
 import r5 from '../../resource/img/r5.png';
 
+import { createTheme, ThemeProvider } from "@mui/material";
+
+
 import styled from "@emotion/styled";
 const Image = styled.img`
   width: 30%;
   margin:0 auto;
 `;
+
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'GmarketSansMedium'
+  }
+})
 
 
 
@@ -56,12 +69,30 @@ function AddCarrot2() {
     setIsAnonymous(event.target.checked);
   };
 
+
+  // 당근 주기 버튼
+  const handleSubmit = (event) => {
+
+  var msg = document.getElementsByName('msg');
+  if(msg[0].value === null || msg[0].value === ''){
+    alert('메시지를 입력하세요.');
+  }else{
+    
+    // false인 경우 동작 x ?
+    event.preventDefault();
+
+    const formData = { imageSrc: selectedImage, message : message, isAnonymous : isAnonymous };
+    console.log(JSON.stringify(formData));  // json 문자열로 변환
+    
+    // 비동기함수 fetch (접근url 적어줌) / headers, request, response 3개 있음
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = { imageSrc: selectedImage, message : message, isAnonymous : isAnonymous };
     console.log(JSON.stringify(formData));
     
+
     fetch('/carrot/add', {
       method: 'POST',
       headers: {
@@ -72,13 +103,19 @@ function AddCarrot2() {
         message : message, 
         isAnonymous : isAnonymous, 
       })
-    })
+
+    })    // .then => 받아온 정보를 사용할 필요가 있는 경우에 사용
+
       .then(response => {
         // handle response from server
       })
       .catch(error => {
         // handle error
       });
+
+
+      window.location.href="ViewCarrot";}
+
   };
 
   const settings = {
@@ -123,7 +160,9 @@ function AddCarrot2() {
         <div className='divMain'>
 
           {/* 여기서 작업 */}
+
           <form onSubmit={handleSubmit}>
+
             <div className='carrotMain'>
               <Grid container spacing={2}>
                 <Grid item xs={1}></Grid>
@@ -150,9 +189,12 @@ function AddCarrot2() {
 
 
                 </Grid>
+
+                <ThemeProvider theme={theme}>
                 <Grid item xs={12}>
                   <TextField
                     className='test'
+                    name="msg"
                     id="standard-required"
                     label="| 메시지"
                     fullWidth sx={{
@@ -169,9 +211,14 @@ function AddCarrot2() {
                 </Grid>
                 <Grid item xs={12}></Grid>
                 <Grid item xs={12}><span id="anonymous">| 익명</span></Grid>
-                <Grid item xs={12}><Switch checked={isAnonymous} onChange={handleAnonymousChange} color="warning" /></Grid>
+
+                </ThemeProvider>
+                <Grid item xs={8}><Switch checked={isAnonymous} onChange={handleAnonymousChange} color="warning" /></Grid>
+                <Grid item xs={4}><button type="submit" id="btnCarrot">🥕 당근 주기</button></Grid>
+
               </Grid>
-              <button type="submit">Submit</button>
+              
+
             </div>
           </form>
 

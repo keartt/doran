@@ -45,8 +45,9 @@ function Department() {
     </List>
   )
 
-  return <>
+
     <Link to = "/작성페이지"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 부서 농장!! </h3></Link >
+
     <div style={{ clear: "both" }} ></div>
     <ThemeProvider theme={theme}>
       {farmList}

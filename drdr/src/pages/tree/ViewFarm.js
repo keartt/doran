@@ -44,8 +44,11 @@ const theme = createTheme({
 
 function ViewFarm() {
 
+
+  
   const [farm, setFarm] = useState([])
-    // 세션에 저장된 아이디
+    
+
 
   useEffect(() => {
     const fetchData = async () => {

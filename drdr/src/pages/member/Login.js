@@ -45,8 +45,26 @@ const onPwHandler = (event) => {
     setpw(event.currentTarget.value)
 }
 
-const onSubmitHandler = (event) => {
+//const onSubmitHandler = (event) => {
     // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
+
+  //   event.preventDefault();
+
+  //   let body = {
+  //     email: Email,
+  //     password: Pw,
+  //   };
+
+  //   // action의 반환값을 dispatch해준다.
+  //   dispatch(loginUser(body)).then((response) => {
+  //     if (response.payload.loginSuccess) {
+  //       props.history.push('/');
+  //     } else {
+  //       alert('Error');
+  //     }
+  //   });
+ //  };
+
     event.preventDefault();
 
     let body = {
@@ -63,6 +81,7 @@ const onSubmitHandler = (event) => {
       }
     });
   };
+
 
   return (
     <div className="mainContainer">
