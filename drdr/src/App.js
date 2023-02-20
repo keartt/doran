@@ -9,9 +9,9 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Test/>}/>
-<<<<<<< Updated upstream
+
         <Route path="AddTree" element={<AddTree/>}/>
-=======
+
         <Route path="Login" element={<Login/>}/>
         <Route path="Signup" element={<Signup/>}/>
         <Route path="Email" element={<Email/>}/>
@@ -25,7 +25,7 @@ function App() {
 
         <Route path="AddCarrot" element={<AddCarrot2/>}/>
         
->>>>>>> Stashed changes
+
       </Routes>
     </div>
     

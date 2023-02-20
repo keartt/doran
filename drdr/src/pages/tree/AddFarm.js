@@ -3,7 +3,7 @@ import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddFarm.css';
 import Header from '../fragment/header';
@@ -77,16 +77,7 @@ function renderRow(props) {
   );
 }
 
-function recieverChange(){
-  recieverCheck = false;
-}
 
-function search(){
-  var reciever = document.getElementsByName('reciever');
-  if(reciever[0].vallue === null || reciever[0].vallue === ""){
-    alert("농장 주인을 검색 후 선택해주세요.");
-  }
-}
 
 function clicks(index) {
   var name = document.getElementsByName('reciever');
@@ -101,7 +92,34 @@ function clicks(index) {
 
 function AddFarm() {
 
-  
+  const [title, setTitle]  = useState('');
+  const [daedLine, setDaedLine]  = useState('');
+  const [receiver, setReceiver]  = useState('');
+  const [subTitle, setSubTitle]  = useState('');
+  const [recieverCheck, setRecieverCheck] = useState(false);
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDeadLineChange = (event) => {
+    setDaedLine(event.target.value);
+  };
+
+  const handleRecieverChange = (event) => {
+    setReceiver(event.target.value);
+  };
+
+  const handleSubTitleChange = (event) => {
+    setSubTitle(event.target.value);
+  };
+
+  const search = () =>{
+    
+    if(receiver.vallue === null || receiver.vallue === ""){
+      alert("농장 주인을 검색 후 선택해주세요.");
+    }
+  }
 
   const [value, setValue] = React.useState(null);
 
@@ -125,7 +143,7 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
-                  }} label="제목" defaultValue="" variant="standard" />
+                  }} label="제목" defaultValue="" onChange={handleTitleChange} variant="standard" />
                 </Grid>
 
 
@@ -140,7 +158,7 @@ function AddFarm() {
                       onChange={(newValue) => {
                         setValue(newValue);
                       }}
-                      renderInput={(params) => <TextField required name ="deadLine" id="standard-required" variant="standard" fullWidth sx={{
+                      renderInput={(params) => <TextField required name ="deadLine" onChange={handleDeadLineChange} id="standard-required" variant="standard" fullWidth sx={{
                         m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                           color: '#FE9A2E;'
                         }
@@ -155,7 +173,7 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
-                  }} label="수신인" onChange={() => recieverChange()} defaultValue="" variant="standard" />
+                  }} label="수신인" onChange={handleRecieverChange} defaultValue="" variant="standard" />
                 </Grid>
 
                 <Grid item xs={1}>
@@ -188,7 +206,7 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                       color: '#FF8000;'
                     }
-                  }} multiline rows={5} variant="standard" />
+                  }} multiline rows={5} onChange={handleSubTitleChange} variant="standard" />
                 </Grid>
 
                 <Grid item xs={12}></Grid>
