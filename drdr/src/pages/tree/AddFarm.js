@@ -51,8 +51,7 @@ function clickAddFarm(){
     alert(title[0].value + " " + deadLine[0].value + " " + reciever[0].value + " " + subTitle[0].vallue);
     var carrotFrm = document.getElementById('carrotFrm');
     carrotFrm.submit();
-
-    
+  
   }
   
  // document.getEle

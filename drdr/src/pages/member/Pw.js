@@ -4,12 +4,8 @@ import '../../resource/css/main.css';
 import '../../resource/css/member/Pw.css';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from "@mui/material";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Divider from '@mui/material/Divider';
-import Slider from '@mui/material/Slider';
 
 const theme = createTheme({
 
@@ -57,12 +53,32 @@ function Pw() {
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <TextField required id="standard-required" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                                <TextField required id="email" name="email" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                                 color: '#FF8000;'}}} label="이메일" defaultValue="" variant="standard" />
                             </Grid>
                             <Grid item xs={12}>
-                            <TextField required id="standard-required" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                            <TextField required id="name" name="name" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                            color: '#FF8000;'}}} label="이름" defaultValue="" variant="standard" />
+                            </Grid>
+                            <Grid item xs={12}></Grid>
+                            <Grid item xs={12}>
+                            <TextField required id="phone" name="phone" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                             color: '#FF8000;'}}} label="전화번호" defaultValue="" variant="standard" />
+                            </Grid>
+                            <Grid item xs={12}></Grid>
+                            <Grid item xs={12}>
+                            <TextField required id="company" name="company" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                            color: '#FF8000;'}}} label="회사" defaultValue="" variant="standard" />
+                            </Grid>
+                            <Grid item xs={12}></Grid>
+                            <Grid item xs={12}>
+                            <TextField required id="department" name="department" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                            color: '#FF8000;'}}} label="부서" defaultValue="" variant="standard" />
+                            </Grid>
+                            <Grid item xs={12}></Grid>
+                            <Grid item xs={12}>
+                            <TextField required id="rank" name="rank" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                            color: '#FF8000;'}}} label="직급" defaultValue="" variant="standard" />
                             </Grid>
                             <Grid item xs={12}></Grid>
                             <Grid item xs={12}>

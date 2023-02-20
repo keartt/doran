@@ -6,6 +6,7 @@ const cors = require('cors');
 const Home = require('./router/home')
 const Farm = require('./router/farm')
 const Carrot =require('./router/Carrot')
+const Member =require('./router/member')
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -36,5 +37,6 @@ app.get('*', function(req, res) {
 
 app.use("/list", Home);
 app.use("/farm", Farm);
-app.use("/carrot", Carrot)
+app.use("/carrot", Carrot);
+app.use("/member", Member);
 
