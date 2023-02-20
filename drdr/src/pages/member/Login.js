@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '../fragment/header';
 import '../../resource/css/main.css';
@@ -32,6 +33,7 @@ const theme = createTheme({
       }
 })
 
+
 function Login() {
 
 const [Email, setemail] = useState("")
@@ -45,26 +47,8 @@ const onPwHandler = (event) => {
     setpw(event.currentTarget.value)
 }
 
-//const onSubmitHandler = (event) => {
+const onSubmitHandler = (event) => {
     // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
-
-  //   event.preventDefault();
-
-  //   let body = {
-  //     email: Email,
-  //     password: Pw,
-  //   };
-
-  //   // action의 반환값을 dispatch해준다.
-  //   dispatch(loginUser(body)).then((response) => {
-  //     if (response.payload.loginSuccess) {
-  //       props.history.push('/');
-  //     } else {
-  //       alert('Error');
-  //     }
-  //   });
- //  };
-
     event.preventDefault();
 
     let body = {
@@ -73,15 +57,14 @@ const onPwHandler = (event) => {
     };
 
     // action의 반환값을 dispatch해준다.
-    dispatch(loginUser(body)).then((response) => {
-      if (response.payload.loginSuccess) {
-        props.history.push('/');
-      } else {
-        alert('Error');
-      }
-    });
+    // dispatch(loginUser(body)).then((response) => {
+    //   if (response.payload.loginSuccess) {
+    //     props.history.push('/');
+    //   } else {
+    //     alert('Error');
+    //   }
+    // });
   };
-
 
   return (
     <div className="mainContainer">
@@ -94,7 +77,6 @@ const onPwHandler = (event) => {
             <div className='divMain'>
           
             {/* 여기서 작업 */}
-
                 <div>
                     <p align = "center">
                         <img src= "Login.png" width="70%" height="30%"></img>
@@ -110,7 +92,7 @@ const onPwHandler = (event) => {
                                     color: '#FF8000;'}}} label="이메일" defaultValue="" variant="standard" />
                                 </Grid>
                                 <Grid item xs={12}>
-                                <TextField required id="standard-required" name="pw" value={Pw} onChange={onPwHandler} fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                                <TextField required id="standard-required" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                                 color: '#FF8000;'}}} label="비밀번호" defaultValue="" variant="standard" />
                                 </Grid>
                                 <Grid item xs={12}></Grid>
@@ -137,5 +119,4 @@ const onPwHandler = (event) => {
     </div>
   );
 }
-
 export default Login;

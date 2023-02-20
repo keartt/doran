@@ -233,5 +233,5 @@ function AddCarrot2() {
     </div>
   );
 }
-
+}
 export default AddCarrot2;

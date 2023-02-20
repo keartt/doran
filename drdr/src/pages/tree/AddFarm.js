@@ -50,8 +50,8 @@ function clickAddFarm(){
     alert(title[0].value + " " + deadLine[0].value + " " + reciever[0].value + " " + subTitle[0].vallue);
     var carrotFrm = document.getElementById('carrotFrm');
     carrotFrm.submit();
-
-
+  }
+}
 var arrName = ['이기춘', '강성현', '김영재', '이유진', '김상명'];
 var arrId = ['lkc', 'ksh', 'kyj', 'lyj', 'ksm'];
 function renderRow(props) {
