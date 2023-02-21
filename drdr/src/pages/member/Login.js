@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../fragment/header';
 import '../../resource/css/main.css';
@@ -9,9 +8,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from "@mui/material";
 import Divider from '@mui/material/Divider';
-// import { useDispatch } from 'react-redux';
-// import { loginUser } from './drdr/src/_action/user_action';
-// import { withRouter } from 'react-router-dom';
 
 const theme = createTheme({
 
@@ -33,7 +29,6 @@ const theme = createTheme({
       }
 })
 
-
 function Login() {
 
 const [Email, setemail] = useState("")
@@ -51,19 +46,28 @@ const onSubmitHandler = (event) => {
     // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
     event.preventDefault();
 
-    let body = {
-      email: Email,
-      password: Pw,
-    };
+    const formData = { email: Email, password: Pw };
+      
+    console.log(JSON.stringify(formData));
 
-    // action의 반환값을 dispatch해준다.
-    // dispatch(loginUser(body)).then((response) => {
-    //   if (response.payload.loginSuccess) {
-    //     props.history.push('/');
-    //   } else {
-    //     alert('Error');
-    //   }
-    // });
+    fetch('/member/login', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      }, // json형태의 데이터를 서버로 보냅니다.
+      body: JSON.stringify({
+        email: Email,
+        password: Pw
+      })
+    })
+
+    .then(response => {
+      // handle response from server
+    })
+    .catch(error => {
+      // handle error
+    });
+
   };
 
   return (
@@ -77,6 +81,7 @@ const onSubmitHandler = (event) => {
             <div className='divMain'>
           
             {/* 여기서 작업 */}
+
                 <div>
                     <p align = "center">
                         <img src= "Login.png" width="70%" height="30%"></img>
@@ -92,7 +97,7 @@ const onSubmitHandler = (event) => {
                                     color: '#FF8000;'}}} label="이메일" defaultValue="" variant="standard" />
                                 </Grid>
                                 <Grid item xs={12}>
-                                <TextField required id="standard-required" fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
+                                <TextField required id="standard-required" name="pw" value={Pw} onChange={onPwHandler} fullWidth sx={{m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                                 color: '#FF8000;'}}} label="비밀번호" defaultValue="" variant="standard" />
                                 </Grid>
                                 <Grid item xs={12}></Grid>
@@ -119,4 +124,5 @@ const onSubmitHandler = (event) => {
     </div>
   );
 }
+
 export default Login;
