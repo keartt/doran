@@ -23,7 +23,6 @@ passport.use(
         if (password != user.pw) {
           return done(null, false, { message: "비밀번호가 틀렸습니다." });
         }
-        
         return done(null, user);
       });
     }
@@ -50,12 +49,13 @@ router.post("/", (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.status(401).send("로그인 실패");
+      return res.status(401).send('fail');
     }
     req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
+      console.log('w4')
       req.session.user = user; // 사용자 정보를 세션에 저장
       return res.status(200).send("로그인 성공");
     });

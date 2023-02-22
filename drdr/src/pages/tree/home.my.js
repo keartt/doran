@@ -4,6 +4,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { Link } from 'react-router-dom';
+import { useCookies } from "react-cookie";
+
 import { createTheme, ThemeProvider } from "@mui/material";
 const theme = createTheme({
   typography: {
@@ -12,6 +14,14 @@ const theme = createTheme({
 })
 
 function My() {
+  // const [cookies, setCookie, removeCookie] = useCookies(["my-cookie"]);
+  // // const userId = cookies["my-cookie"].user;
+  // // console.log(userId);
+  // console.log(cookies["my-cookie"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["my-cookie"]);
+  const esc = cookies["my-cookie"].user;
+  console.log(esc);
+
   const [farm, setFarm] = useState([])
     // 세션에 저장된 아이디
     const userId = '강성현'
@@ -37,6 +47,7 @@ function My() {
   // title subTitle receiver count 
 
   const farmList = farm.map((farm, i) =>
+  <Link to={"/ViewFarm/" + farm._id}>
     <List sx={{ width: "90%", bgcolor: "background.paper" }} key={i}>
       <ListItem alignItems="flex-start" style={{marginLeft:'5%'}} >
         <ListItemText
@@ -44,6 +55,7 @@ function My() {
           secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개 </span> 
       </ListItem>
     </List>
+    </Link>
   )
   return <>
 

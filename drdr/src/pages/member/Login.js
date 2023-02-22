@@ -62,10 +62,15 @@ function Login() {
             body: JSON.stringify({ email, password }),
         })
             .then((response) => {
-                LoginSuccess();
-                console.log("여기" +response)
-            })
-            .then((data) => {} )
+                if (response.status === 200) {
+                  LoginSuccess();
+                } else if (response.status === 401) {
+                    alert('농장 주인 맞슈?')
+                  window.location.href = "/login";
+                } else {
+                  throw new Error("서버 응답 오류");
+                }
+              })
             .catch(error => {
                 console.error(error);
             });

@@ -36,7 +36,8 @@ app.get('*', function(req, res) {
 // })
 
 
-app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
+app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false,
+name: 'my-cookie' }));
 // 이 코드 아래에 라우터 써야지 세션 쓸 수 있음
 // 세션에 저장된 값 = _id, email, pw
 // 다른 라우터에서 세션 쓰는법
