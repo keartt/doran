@@ -42,11 +42,23 @@ function Pw() {
           
             {/* 여기서 작업 */}
 
-                <div>
-                    <p align = "center">                     
-                        <img src= "Pw.png" width="50%" height="20%"></img>           
-                    </p>                   
+            <div class="wrapper">
+                <div class="speech-bubble">
+                    <p>비밀번호를 잃어버리셨군요...</p>
                 </div>
+
+                <img
+                    className="login-image image-3"
+                    src="Rabbit_3.png"
+                    alt="Login"
+                    width="20%"
+                    height="30%"
+                />
+
+                <div class="speech-bubble2">
+                    <p>제가 찾아드릴게요...</p>
+                </div>
+            </div>
 
                 <div>
                     <form>
