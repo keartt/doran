@@ -4,8 +4,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddFarm.css';
 import Header from '../fragment/header';
@@ -18,13 +17,24 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList } from 'react-window';
-
+import List from "@mui/material/List";
 
 import PersonIcon from '@mui/icons-material/Person';
 import Avatar from '@mui/material/Avatar';
 
 import { createTheme, ThemeProvider } from "@mui/material";
 
+// var title;
+// var daedLine;
+// var receiver;
+// var subTitle;
+// var recieverCheck = false;
+
+// var [title, setTitle] = useState('');
+// var [daedLine, setDaedLine] = useState('');
+// var [receiver, setReceiver] = useState('');
+// var [subTitle, setSubTitle] = useState('');
+// var [recieverCheck, setRecieverCheck] = useState(false);
 
 const theme = createTheme({
   typography: {
@@ -34,104 +44,212 @@ const theme = createTheme({
 
 
 
-var recieverCheck = false;
-
-function clickAddFarm(){
-
-  var title = document.getElementsByName('title');
-  var deadLine = document.getElementsByName('deadLine');
-  var reciever = document.getElementsByName('reciever');
-  var subTitle = document.getElementsByName('subTitle');
-
-  if(recieverCheck === false){
-    alert("수신인 선택해!");
-  }else{
-    
-    alert(title[0].value + " " + deadLine[0].value + " " + reciever[0].value + " " + subTitle[0].vallue);
-    var carrotFrm = document.getElementById('carrotFrm');
-    carrotFrm.submit();
-  }
-}
-var arrName = ['이기춘', '강성현', '김영재', '이유진', '김상명'];
-var arrId = ['lkc', 'ksh', 'kyj', 'lyj', 'ksm'];
-function renderRow(props) {
-  const { index, style } = props;
-
-  return (
-
-    <ThemeProvider theme={theme}>
-
-      <ListItem style={style} key={arrName[index]} value={arrName[index]} component="div" disablePadding onClick={() => clicks(index)}>
-       <ListItemButton>
-          <Avatar sx={{ marginRight: 2 }}>
-            <PersonIcon />
-          </Avatar>
-        
-        <ListItemText primary={`${arrName[index]} ( ${arrId[index]} )`} secondary="IE팀 사원" />
-        </ListItemButton>
-        {/*<ListItemButton>
-          <ListItemText primary={`Item : ${arr[index]}`} />
-          <ListItemText primary={`부서`} />
-          <ListItemText primary={`직급`} />
-          <ListItemText primary={`아이디`} />
-  </ListItemButton> */}
-      </ListItem>
-      
-    </ThemeProvider>
-  );
-}
-
-
-function recieverChange(){
-  recieverCheck = false;
-}
-
-
-function clicks(index) {
-  var name = document.getElementsByName('reciever');
-
-  name[0].defaultValue = " ";
-  name[0].value = arrName[index];
-  alert(arrName[index]);
-
-  recieverCheck = true;
-
-}
-
 function AddFarm() {
 
+  const [arr, setArr] = React.useState([]);
 
-  const [title, setTitle]  = useState('');
-  const [daedLine, setDaedLine]  = useState('');
-  const [receiver, setReceiver]  = useState('');
-  const [subTitle, setSubTitle]  = useState('');
+  const [title, setTitle] = useState('');
+  // const [daedLine, setDaedLine] = useState('');
+  const [value, setValue] = React.useState(new Date());
+
+  const [receiver, setReceiver] = useState('');
+  const [subTitle, setSubTitle] = useState('');
   const [recieverCheck, setRecieverCheck] = useState(false);
+
+
+  // 사용자 목록
+
+  var arrName = [];
+  var arrEmail = [];
+  var arrDepartment = [];
+
+  // const [arrName, setArrName] = useState([]);
+  // const [arrEmail, setArrEmail] = useState([]);
+  // const [arrDepartment, setArrDepartment] = useState([]);
+
+
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
 
-  const handleDeadLineChange = (event) => {
-    setDaedLine(event.target.value);
-  };
+  // const handleDeadLineChange = (event) => {
+  //   setDaedLine(event.target.value);
+  // };
 
+  // 수신인
   const handleRecieverChange = (event) => {
     setReceiver(event.target.value);
+    setRecieverCheck(false);
   };
 
   const handleSubTitleChange = (event) => {
     setSubTitle(event.target.value);
   };
 
-  const search = () =>{
-    
-    if(receiver.vallue === null || receiver.vallue === ""){
-      alert("농장 주인을 검색 후 선택해주세요.");
+
+
+
+  //  insert 작업
+  const handleSubmit = (event) => {
+
+    alert(title + " : " + receiver + " " + subTitle);
+
+    if (title.trim() === "" || receiver.trim() === "" || subTitle.trim() === "") {
+      alert("모든 정보를 입력하세요.");
+    } else {
+      if (recieverCheck === false) {
+        alert("농장 주인을 선택해주세요.");
+      } else {
+
+
+        event.preventDefault();
+
+
+        fetch('/farm/insert', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          }, // json형태의 데이터를 서버로 보냅니다.
+          body: JSON.stringify({
+            title: title.trim(),
+            subTitle: subTitle.trim(),
+            daedLine: value,
+            receiver: receiver.trim(),
+            company: "올포랜드",
+            CorD: true,
+            counter: 0
+          })
+
+        })    // .then => 받아온 정보를 사용할 필요가 있는 경우에 사용
+          .then((res) => res.json()) //추가된 부분
+          .then((json) => {
+            var farmId = json.farmId;
+            window.location.href = "/ViewFarm/"+farmId;
+            alert("1"+ json.farmId)
+            // handle response from server
+          })
+          
+          .catch(error => {
+            // handle error
+          });
+
+        // window.location.href = "/ViewCarrot";
+
+        // var carrotFrm = document.getElementById('carrotFrm');
+        // carrotFrm.submit();
+
+      }
     }
   }
 
 
-  const [value, setValue] = React.useState(null);
+
+  const clicks = function (index) {
+
+    var name = document.getElementsByName('reciever');
+    name[0].defaultValue = " ";
+    name[0].value = arrEmail[index];
+
+    setRecieverCheck(true);
+    setReceiver(arrEmail[index]);
+
+  }
+
+/*
+  const useSearch = () => {
+
+    alert(receiver);
+
+    if (receiver === null || receiver.trim() === "") {
+      alert("검색할 농장 주인을 입력하세요.");
+    } else {
+
+
+      useEffect(() => {
+
+        const fetchData = async () => {
+          const response = await fetch('/farm/search', {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: receiver
+            })
+          })
+          const json2 = await response.json();
+          setArr(json2);
+          alert(JSON.stringify(json2));
+
+        };
+        fetchData();
+      }, []);
+
+      setArrName([]);
+      setArrEmail([]);
+      setArrDepartment([]);
+
+      const nameList = arr.map((arr, i) =>
+        arrName.push(arr.name)
+      )
+      const emailList = arr.map((arr, i) =>
+        arrEmail.push(arr.email)
+      )
+      const departmentList = arr.map((arr, i) =>
+        arrDepartment.push(arr.department)
+      )
+    }
+  }
+*/
+
+
+  // 사람 List
+  const renderRow = function (porps) {
+
+    const { index, style } = porps;
+    return (
+
+      <ListItem style={style} key={arrName[index]} value={arrName[index]} component="div" disablePadding onClick={() => clicks(index)}>
+        <ListItemButton>
+          <Avatar sx={{ marginRight: 2 }}>
+            <PersonIcon />
+          </Avatar>
+
+          <ListItemText primary={`${arrName[index]} ( ${arrEmail[index]} )`} secondary={`${arrDepartment[index]}`} />
+        </ListItemButton></ListItem>
+
+    );
+
+  }
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      const response = await fetch('/farm/selectUser', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      const json = await response.json();
+      setArr(json);
+
+    };
+    fetchData();
+  }, []);
+
+
+  const nameList = arr.map((arr, i) =>
+    arrName.push(arr.name)
+  )
+  const emailList = arr.map((arr, i) =>
+    arrEmail.push(arr.email)
+  )
+  const departmentList = arr.map((arr, i) =>
+    arrDepartment.push(arr.department)
+  )
+
 
   return (
 
@@ -145,7 +263,7 @@ function AddFarm() {
           <Header />
 
 
-          <form action='/carrot/insert' id='carrotFrm' method='post'>
+          <form id='carrotFrm' method='post'>
             <div className='treeMain'>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -154,7 +272,7 @@ function AddFarm() {
                       color: '#FE9A2E;'
                     }
 
-                  }} label="제목" defaultValue="" onChange={handleTitleChange} variant="standard" />
+                  }} label="제목" defaultValue=" " onChange={handleTitleChange} variant="standard" />
 
                 </Grid>
 
@@ -171,7 +289,7 @@ function AddFarm() {
                         setValue(newValue);
                       }}
 
-                      renderInput={(params) => <TextField required name ="deadLine" onChange={handleDeadLineChange} id="standard-required" variant="standard" fullWidth sx={{
+                      renderInput={(params) => <TextField required name="deadLine" id="standard-required" variant="standard" fullWidth sx={{
 
                         m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                           color: '#FE9A2E;'
@@ -187,13 +305,14 @@ function AddFarm() {
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
                     }
-                  }} label="수신인" onChange={handleRecieverChange} defaultValue="" variant="standard" />
+                  }} label="수신인" onChange={handleRecieverChange} defaultValue=" " variant="standard" />
 
                 </Grid>
 
                 <Grid item xs={1}>
 
-                  <IconButton variant="contained" id="btnSearch" size="small" onClick={() => search()}>
+                  <IconButton variant="contained" id="btnSearch" size="small">
+                  {/* <IconButton variant="contained" id="btnSearch" size="small" onClick={useSearch}> */}
 
                     <SearchIcon />
                   </IconButton>
@@ -212,7 +331,6 @@ function AddFarm() {
                   </FixedSizeList>
 
 
-
                 </Grid>
 
 
@@ -229,7 +347,8 @@ function AddFarm() {
 
                 <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
-                  <Button variant="contained" id="btnCreate" size="small" onClick={() => clickAddFarm()}>
+                  {/* <Button variant="contained" id="btnCreate" size="small" onClick={() => clickAddFarm()}> */}
+                  <Button type="button" variant="contained" id="btnCreate" size="small" onClick={handleSubmit} >
                     농장 만들기
                   </Button>
                 </Grid>

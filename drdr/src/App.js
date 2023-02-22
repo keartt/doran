@@ -9,8 +9,7 @@ import Email from "./pages/member/Email";
 import Pw from "./pages/member/Pw";
 import Home from "./pages/tree/home.main";
 
-import AddCarrot2 from "./pages/tree/addCarrot2";
-
+import AddCarrot from "./pages/tree/addCarrot";
 
 import './App.css';
 
@@ -26,8 +25,7 @@ function App() {
         <Route path="Email" element={<Email/>}/>
         <Route path="Pw" element={<Pw/>}/>
         <Route path="AddFarm" element={<AddFarm/>}/>
-        <Route path="AddFarm/:info" element={<AddFarm/>}/>
-        <Route path="ViewFarm" element={<ViewFarm/>}/>
+        <Route path="/ViewFarm/:farmId" element={<ViewFarm/>}/>
         {/* <Route path="AddCarrot" element={<AddCarrot/>}/> */}
         <Route path="ViewCarrot" element={<ViewCarrot/>}/>
         <Route path="Home" element={<Home/>}/>

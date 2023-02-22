@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 
 import React, { useEffect } from 'react';
 import { useState } from "react";
+import { useParams } from 'react-router-dom';
 
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddFarm.css';
@@ -44,38 +45,39 @@ const theme = createTheme({
 
 function ViewFarm() {
 
-
-  
   const [farm, setFarm] = useState([])
-    
+
+  const params = useParams();
+  // alert(params.farmId);
+
 
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/farm/select', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          }, // json형태의 데이터를 서버로 보냅니다.
-          body: JSON.stringify({
-            title: "title1"
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        }, // json형태의 데이터를 서버로 보냅니다.
+        body: JSON.stringify({
+          farmId: params.farmId
         })
       })
+      
       const json = await response.json();
+      // alert(JSON.stringify(json));
 
       setFarm(json);
+
     };
     fetchData();
-  }, []);
-
-
+  });
 
   const farmInfo = farm.map((farm, i) =>
 
+
   <>
-
-
-              <Grid item xs={1}>
+              <Grid item xs={1} key={i}>
                 <MailOutlineIcon />
               </Grid>
               <Grid item xs={11}>
@@ -86,7 +88,7 @@ function ViewFarm() {
                 <SentimentSatisfiedAltIcon />
               </Grid>
               <Grid item xs={11}>
-                <span id="recipient">{farm.reciever}</span>
+                <span id="recipient">{farm.receiver}</span>
               </Grid>
 
               <Grid item xs={1}>
@@ -97,10 +99,13 @@ function ViewFarm() {
               </Grid>
   
   </>
+    
+)
 
-  )
+
   return (
 
+    
     <ThemeProvider theme={theme}>
       <div className="mainContainer">
 
@@ -110,51 +115,27 @@ function ViewFarm() {
 
           <Header />
 
-
           <div className='carrotMain'>
 
             <Grid container spacing={2}>
 
-
               <Grid item xs={12}>
-              <Link to = "/AddCarrot">
-              <IconButton style={{ backgroundColor:'#FF8000', borderRadius:'5px', color: "#FFFFFF", fontFamily: "GmarketSansMedium", fontSize :'15px' }}><ModeEditIcon style={{ color: "#FFFFFF"}} /><span>　작성</span></IconButton>
-              </Link>
+                <Link to={"/AddCarrot/"+ params.farmId}>
+                  <IconButton style={{ backgroundColor: '#FF8000', borderRadius: '5px', color: "#FFFFFF", fontFamily: "GmarketSansMedium", fontSize: '15px' }}><ModeEditIcon style={{ color: "#FFFFFF" }} /><span>　작성</span></IconButton>
+                </Link>
               </Grid>
 
-
-              
               <Grid item xs={12}></Grid>
+
               {farmInfo}
 
-              {/* <Grid item xs={1}>
-                <MailOutlineIcon />
-              </Grid>
-              <Grid item xs={11}>
-                <span id="title">{farm.title}</span>
-              </Grid>
-
-              <Grid item xs={1}>
-                <SentimentSatisfiedAltIcon />
-              </Grid>
-              <Grid item xs={11}>
-                <span id="recipient">{farm.reciever}</span>
-              </Grid>
-
-              <Grid item xs={1}>
-                <ChatBubbleOutlineIcon />
-              </Grid>
-              <Grid item xs={11}>
-                <span id="recipient">{farm.subTitle}</span>
-              </Grid> */}
-              
               <Grid item xs={12}></Grid>
               <Grid item xs={12}></Grid>
               <Grid item xs={12}></Grid>
               <Grid item xs={12}></Grid>
 
 
-</Grid>
+            </Grid>
             <Grid container spacing={9}>
               <Grid item xs={4}>
                 <Stack justifyContent="center" alignItems="center" spacing={2}>

@@ -1,42 +1,77 @@
 var express = require('express')
 var router = express.Router();
-const db = require('../db');
+const dbCon = require('../db');
 
+const { ObjectId } = require('mongodb');
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
+
+
+
+// 농장 검색 -> 농장id로 접근해야함
 router.post('/select', (req, res) => {
 
-  console.log("리퀘 바디 : " + req.body.title);
-    db.db.collection('test').find({ title: req.body.title }).toArray((err, result) => {
-      console.log("----- "+result);
+  
+  var farm = req.body.farmId;
+
+  console.log("리퀘 바디 : " + req.body.farmId);
+  dbCon.db.collection('farm').find({_id: ObjectId(req.body.farmId)}).toArray((err, result) => {
+      console.log("1--------------- " +result);
+      const str = JSON.stringify(result);
+      console.log("2--------------- " +str);
+      // res.send({resultFarm:result});
+      res.json(result);
+  });
+
+});
+
+// 모든 사용자 검색
+router.post('/selectUser', (req, res) => {
+
+  console.log("selectUser");
+
+
+    dbCon.db.collection('member').find({}).toArray((err, result) => {
     res.json(result);
   });
 
 });
 
 
+// 농장 추가
+router.post('/insert', (req, res) => {
+  console.log("insert");
+  // 몽고디비는 _id 값을  Object 형식으로 넣어줘야 해서 아래 과정 진행함
+  var ObjectId = require('mongodb').ObjectID; // 이거 필수 
+  var objId = new ObjectId();
+  console.log("****" + objId);
+  const reqData = req.body;
+  const dataAdd = {
+    ...reqData,
+    _id: objId,
+    date: new Date()
+  };
+  
+  dbCon.db.collection('farm').insertOne(dataAdd, (error, result) => {
+    
+    console.log('저장완료');
+  });
+  res.send({farmId:objId});
+});
 
-// router.post('/company', (req, res) => {
-//   // console.log("리퀘 바디 : "+req.body.id)
-//   // req  =  company & CorD 
+// 검색
+router.post('/search/${objId}', (req, res) => {
 
-//         db.db.collection('drList').find({company : req.body.company , CorD : true}).toArray((err, result) => {
-//         res.json(result);
-//     }); 
-// });
+  console.log("search");
 
-// router.post('/department', (req, res) => {
-//   // req  =  company & CorD 
 
-//         db.db.collection('drList').find({company : req.body.company , CorD : false}).toArray((err, result) => {
-//         res.json(result);
-//     }); 
-// });
+    dbCon.db.collection('member').find({name : req.body.name}).toArray((err, result) => {
+    res.json(result);
+  });
 
-// router.post('/my', (req, res) => {
-//   // req  =  receiver: user_id
+});
 
-//         db.db.collection('drList').find({receiver : req.body.receiver}).toArray((err, result) => {
-//         res.json(result);
-//     }); 
-// });
+
 
 module.exports = router;
