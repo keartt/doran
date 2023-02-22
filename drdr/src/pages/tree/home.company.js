@@ -11,9 +11,10 @@ const theme = createTheme({
   }
 })
 function Company() {
-  const [farm, setFarm] = useState([])
+  const [farm, setFarm] = useState( []  )
     // 세션에 저장된 회사명,,
-    const company = 'all4'
+  const company = 'all4'
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/list/company', {
@@ -37,7 +38,7 @@ function Company() {
       <ListItem alignItems="flex-start" style={{marginLeft:'5%'}} >
         <ListItemText
           primary=  {`to ${farm.receiver} : ${farm.title}`}
-          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개 </span> 
+          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개 아이디 : {farm._id} </span> 
       </ListItem>
     </List>
   )
