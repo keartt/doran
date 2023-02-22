@@ -83,11 +83,43 @@ function Login() {
 
                     {/* 여기서 작업 */}
 
-                    <div>
-                        <p align="center">
-                            <img src="Login.png" width="70%" height="30%"></img>
-                        </p>
-                    </div>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  className="login-image image-1"
+                  src="Rabbit_1.png"
+                  alt="Login"
+                  width="20%"
+                  height="30%"
+                />
+                <img
+                  className="login-image image-2"
+                  src="Rabbit_2.png"
+                  alt="Login"
+                  width="20%"
+                  height="30%"
+                />
+                <img
+                  className="login-image image-3"
+                  src="Rabbit_3.png"
+                  alt="Login"
+                  width="20%"
+                  height="30%"
+                />
+                <img
+                  className="login-image image-4"
+                  src="Rabbit_4.png"
+                  alt="Login"
+                  width="20%"
+                  height="30%"
+                />
+                <img
+                  className="login-image image-5"
+                  src="Rabbit_5.png"
+                  alt="Login"
+                  width="20%"
+                  height="30%"
+                />
+              </div>
 
                     <div>
                         <form onSubmit={handleSubmit}>
