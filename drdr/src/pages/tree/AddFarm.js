@@ -93,7 +93,7 @@ function AddFarm() {
   //  insert 작업
   const handleSubmit = (event) => {
 
-    alert(title + " : " + receiver + " " + subTitle);
+    // alert(title + " : " + receiver + " " + subTitle);
 
     if (title.trim() === "" || receiver.trim() === "" || subTitle.trim() === "") {
       alert("모든 정보를 입력하세요.");
@@ -126,7 +126,7 @@ function AddFarm() {
           .then((json) => {
             var farmId = json.farmId;
             window.location.href = "/ViewFarm/"+farmId;
-            alert("1"+ json.farmId)
+            // alert("1"+ json.farmId)
             // handle response from server
           })
           

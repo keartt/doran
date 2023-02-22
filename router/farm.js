@@ -15,12 +15,8 @@ router.post('/select', (req, res) => {
   
   var farm = req.body.farmId;
 
-  console.log("리퀘 바디 : " + req.body.farmId);
+  // console.log("리퀘 바디 : " + req.body.farmId);
   dbCon.db.collection('farm').find({_id: ObjectId(req.body.farmId)}).toArray((err, result) => {
-      console.log("1--------------- " +result);
-      const str = JSON.stringify(result);
-      console.log("2--------------- " +str);
-      // res.send({resultFarm:result});
       res.json(result);
   });
 
@@ -29,8 +25,7 @@ router.post('/select', (req, res) => {
 // 모든 사용자 검색
 router.post('/selectUser', (req, res) => {
 
-  console.log("selectUser");
-
+  // console.log("selectUser");
 
     dbCon.db.collection('member').find({}).toArray((err, result) => {
     res.json(result);
@@ -41,11 +36,10 @@ router.post('/selectUser', (req, res) => {
 
 // 농장 추가
 router.post('/insert', (req, res) => {
-  console.log("insert");
+  // console.log("insert");
   // 몽고디비는 _id 값을  Object 형식으로 넣어줘야 해서 아래 과정 진행함
   var ObjectId = require('mongodb').ObjectID; // 이거 필수 
   var objId = new ObjectId();
-  console.log("****" + objId);
   const reqData = req.body;
   const dataAdd = {
     ...reqData,
@@ -54,8 +48,7 @@ router.post('/insert', (req, res) => {
   };
   
   dbCon.db.collection('farm').insertOne(dataAdd, (error, result) => {
-    
-    console.log('저장완료');
+    // console.log('저장완료');
   });
   res.send({farmId:objId});
 });
@@ -63,10 +56,10 @@ router.post('/insert', (req, res) => {
 // 검색
 router.post('/search/${objId}', (req, res) => {
 
-  console.log("search");
+  // console.log("search");
 
 
-    dbCon.db.collection('member').find({name : req.body.name}).toArray((err, result) => {
+    dbCon.db.collection('member').find({name : req.body.name}).sort({_id : -1}).toArray((err, result) => {
     res.json(result);
   });
 

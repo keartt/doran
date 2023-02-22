@@ -26,7 +26,7 @@ function App() {
         <Route path="AddFarm" element={<AddFarm/>}/>
         <Route path="/ViewFarm/:farmId" element={<ViewFarm/>}/>
         {/* <Route path="AddCarrot" element={<AddCarrot/>}/> */}
-        <Route path="ViewCarrot" element={<ViewCarrot/>}/>
+        <Route path="ViewCarrot/:carrotId" element={<ViewCarrot/>}/>
         <Route path="Home" element={<Home/>}/>
 
         <Route path="AddCarrot/:farmId" element={<AddCarrot/>}/>

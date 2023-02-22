@@ -17,8 +17,8 @@ import r5 from '../../resource/img/r5.png';
 import { useParams } from 'react-router-dom';
 
 import { createTheme, ThemeProvider } from "@mui/material";
-import styled from "@emotion/styled";
 
+import styled from "@emotion/styled";
 const Image = styled.img`
   width: 30%;
   margin:0 auto;
@@ -36,6 +36,8 @@ function AddCarrot() {
 
   const params = useParams();
 
+  // alert(params.farmId);
+  
   const [message, setMessage] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
 
@@ -44,18 +46,8 @@ function AddCarrot() {
 
 
   const handleImageChange = (index) => {
-    // "imageSrc":"r1","message" 가 됨
     setSelectedImage("r"+index);
 
-
-    // 소스 경로를 아래처럼 싶으면 아래처럼 바꾸면 되는데 경로가 좀 이상함 
-    // "imageSrc":"/static/media/r1.a46d9656ba63c9aa9836.png"
-
-    // 이렇게 할려면 아래 두줄 주석 풀고 위에 setSelectedImage useState 쓰는 부분 주석 풀고
-    // 아래 switch 문 수정하면 됨 주석처럼
-
-    // const images = [r1, r2, r3, r4, r5];
-    // setSelectedImage(images[index]);
   };
 
   const handleMessageChange = (event) => {
@@ -67,30 +59,44 @@ function AddCarrot() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
 
-    const formData = { imageSrc: selectedImage, message : message, isAnonymous : isAnonymous };
-    console.log(JSON.stringify(formData));
+    if(message.trim() === ""){
+      alert("모든 정보를 입력하세요.");
+    }else{
 
-    fetch('/carrot/add', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      }, // json형태의 데이터를 서버로 보냅니다.
-      body: JSON.stringify({
-        imageSrc: selectedImage, 
-        message : message, 
-        isAnonymous : isAnonymous, 
-        farmId: params,
+      event.preventDefault();
+
+      const formData = { farmId: params.farmId ,imageSrc: selectedImage, message : message, isAnonymous : isAnonymous };
+      console.log(JSON.stringify(formData));
+  
+      fetch('/carrot/add', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        }, // json형태의 데이터를 서버로 보냅니다.
+        body: JSON.stringify({
+          imageSrc: selectedImage, 
+          message : message, 
+          isAnonymous : isAnonymous, 
+          farmId: params.farmId,
+        })
       })
-    })
-      .then(response => {
+  
+      
+      .then((res) => res.json()) //추가된 부분
+      .then((json) => {
+        var carrotId = json.carrotId;
+        window.location.href = "/ViewFarm/"+params.farmId;
+        // alert("1"+ json.farmId)
         // handle response from server
       })
-      .catch(error => {
-        // handle error
-      });
-  };
+        .catch(error => {
+          // handle error
+        });
+
+    }
+
+  }
 
   const settings = {
     dots: false,
@@ -136,7 +142,7 @@ function AddCarrot() {
         <div className='divMain'>
 
           {/* 여기서 작업 */}
-          <form onSubmit={handleSubmit}>
+          <form method='post'>
             <div className='carrotMain'>
               <Grid container spacing={2}>
                 <Grid item xs={1}></Grid>
@@ -184,7 +190,7 @@ function AddCarrot() {
                 <Grid item xs={12}></Grid>
                 <Grid item xs={12}><span id="anonymous">| 익명</span></Grid>
                 <Grid item xs={8}><Switch checked={isAnonymous} onChange={handleAnonymousChange} color="warning" /></Grid>
-                <Grid item xs={4}><button type="submit" id="btnCarrot">🥕 당근 주기</button></Grid>
+                <Grid item xs={4}><button type='button' id="btnCarrot" onClick={handleSubmit}>🥕 당근 주기</button></Grid>
               
                 </ThemeProvider>
               </Grid>

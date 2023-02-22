@@ -46,10 +46,10 @@ const theme = createTheme({
 function ViewFarm() {
 
   const [farm, setFarm] = useState([])
+  const [carrot, setCarrot] = useState([])
 
   const params = useParams();
   // alert(params.farmId);
-
 
 
   useEffect(() => {
@@ -71,7 +71,7 @@ function ViewFarm() {
 
     };
     fetchData();
-  });
+  }, []);
 
   const farmInfo = farm.map((farm, i) =>
 
@@ -103,6 +103,48 @@ function ViewFarm() {
 )
 
 
+
+useEffect(() => {
+  const fetchData = async () => {
+    const response = await fetch('/carrot/select', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      }, // json형태의 데이터를 서버로 보냅니다.
+      body: JSON.stringify({
+        farmId: params.farmId
+      })
+    })
+    
+    const json = await response.json();
+    // alert(JSON.stringify(json));
+
+    setCarrot(json);
+
+  };
+  fetchData();
+}, []);
+
+var UI = {
+  r1: <Image src={r1} />,
+  r2: <Image src={r2} />,
+  r3: <Image src={r3} />,
+  r4: <Image src={r4} />,
+  r5:  <Image src={r5} />
+}
+
+const carrotInfo = carrot.map((carrot, i) =>
+
+  <>
+              <Grid item xs={4}>
+                <Stack justifyContent="center" alignItems="center" spacing={2}>
+                  {UI[carrot.imageSrc]}
+                  <Link to={"/ViewCarrot/" + carrot._id}> <span>익명의 토끼</span></Link>
+                </Stack>
+              </Grid>
+  
+  </>
+)
   return (
 
     
@@ -137,7 +179,11 @@ function ViewFarm() {
 
             </Grid>
             <Grid container spacing={9}>
-              <Grid item xs={4}>
+
+              {carrotInfo}
+
+              
+              {/* <Grid item xs={4}>
                 <Stack justifyContent="center" alignItems="center" spacing={2}>
                   <Image src={r3} />
                   <a href='/ViewCarrot'>익명의 토끼</a>
@@ -185,7 +231,7 @@ function ViewFarm() {
                   <a href='/ViewCarrot'>익명의 토끼</a>
 
                 </Stack>
-              </Grid>
+              </Grid> */}
             </Grid>
           </div>
         </div>
