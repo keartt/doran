@@ -3,6 +3,8 @@ var router = express.Router();
 const dbCon = require('../db');
 
 router.post('/company', (req, res) => {
+  const user = req.session.user; // 저장된 세션의 사용자 정보 가져오기
+  console.log(user)
   // console.log("리퀘 바디 : "+req.body.id)
   // req  =  company & CorD 
 

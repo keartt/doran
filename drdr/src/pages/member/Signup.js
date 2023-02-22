@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from "@mui/material";
+import { redirect } from 'react-router-dom';
 //import { useDispatch } from 'react-redux';
 //import { registerUser } from '../../../_actions/user_action';
 
@@ -75,6 +76,11 @@ function Signup() {
     // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
     event.preventDefault();
 
+    function SignupSuccess() {
+      alert('회원가입 성공');
+      window.location.href = '/login';
+    }
+
     const formData = { email: Email,
       password: Pw,
       name: Name,
@@ -84,16 +90,6 @@ function Signup() {
       rank:Rank };
     console.log(JSON.stringify(formData));
 
-    const data = {  
-      email: Email,
-      password: Pw,
-      name: Name,
-      phone: Phone,
-      company: Company,
-      department: Department,
-      rank:Rank
-    };
-
     fetch('/member/add', {
       method: 'POST',
       headers: {
@@ -101,17 +97,16 @@ function Signup() {
       }, // json형태의 데이터를 서버로 보냅니다.
       body: JSON.stringify({
         email: Email,
-      password: Pw,
-      name: Name,
-      phone: Phone,
-      company: Company,
-      department: Department,
-      rank:Rank
+        password: Pw,
+        name: Name,
+        phone: Phone,
+        company: Company,
+        department: Department,
+        rank:Rank
       })
     })
-
     .then(response => {
-      // handle response from server
+      SignupSuccess();
     })
     .catch(error => {
       // handle error

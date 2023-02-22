@@ -11,13 +11,15 @@ import Home from "./pages/tree/home.main";
 
 import AddCarrot2 from "./pages/tree/addCarrot2";
 
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Test/>}/>
+        {/* <Route path="/" element={<Test/>}/> */}
+        <Route path="/" element={<Login/>}/>
 
         <Route path="Login" element={<Login/>}/>
         <Route path="Signup" element={<Signup/>}/>
@@ -30,7 +32,7 @@ function App() {
         <Route path="ViewCarrot" element={<ViewCarrot/>}/>
         <Route path="Home" element={<Home/>}/>
 
-        <Route path="AddCarrot" element={<AddCarrot2/>}/>
+        <Route path="AddCarrot2" element={<AddCarrot2/>}/>
         
 
         

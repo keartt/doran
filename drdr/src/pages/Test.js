@@ -19,13 +19,13 @@ function Test() {
           <Link to="/home">
               홈화면 이동
           </Link>
-          <Link to="/home">
+          <Link to="/Login">
               로그인화면이동 이동
           </Link>
           <Link to="/ViewFarm">
               Farm화면 이동
           </Link>
-
+          
 
         </div>
 
