@@ -9,7 +9,7 @@ import Email from "./pages/member/Email";
 import Pw from "./pages/member/Pw";
 import Home from "./pages/tree/home.main";
 
-import AddCarrot from "./pages/tree/addCarrot";
+import AddCarrot from "./pages/tree/AddCarrot";
 
 import './App.css';
 
@@ -17,8 +17,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {/* <Route path="/" element={<Test/>}/> */}
-        <Route path="/" element={<Login/>}/>
+        <Route path="/" element={<Test/>}/>
 
         <Route path="Login" element={<Login/>}/>
         <Route path="Signup" element={<Signup/>}/>
@@ -30,7 +29,7 @@ function App() {
         <Route path="ViewCarrot" element={<ViewCarrot/>}/>
         <Route path="Home" element={<Home/>}/>
 
-        <Route path="AddCarrot2" element={<AddCarrot2/>}/>
+        <Route path="AddCarrot/:farmId" element={<AddCarrot/>}/>
         
 
         
