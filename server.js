@@ -36,12 +36,15 @@ app.get('*', function(req, res) {
 // })
 
 
-
-
+app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
+// 이 코드 아래에 라우터 써야지 세션 쓸 수 있음
+// 세션에 저장된 값 = _id, email, pw
+// 다른 라우터에서 세션 쓰는법
+//const user = req.session.user;  하면 json 형식으로 
+//{ _id: '63f5854fee926f1cf30a706b', email: 't@t', pw: 'tt' } 으로 담겨있음
 
 app.use("/list", Home);
 app.use("/farm", Farm);
 app.use("/carrot", Carrot);
 app.use("/member", Member);
-app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
 app.use('/login', login);
