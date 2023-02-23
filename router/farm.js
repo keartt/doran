@@ -27,7 +27,7 @@ router.post('/selectUser', (req, res) => {
 
   // console.log("selectUser");
 
-    dbCon.db.collection('member').find({}).toArray((err, result) => {
+    dbCon.db.collection('login').find({}).toArray((err, result) => {
     res.json(result);
   });
 
@@ -36,21 +36,38 @@ router.post('/selectUser', (req, res) => {
 
 // 농장 추가
 router.post('/insert', (req, res) => {
+
+  const user = req.session.user; // 저장된 세션의 사용자 정보 가져오기
+  const userid = user._id;
+
+
   // console.log("insert");
   // 몽고디비는 _id 값을  Object 형식으로 넣어줘야 해서 아래 과정 진행함
   var ObjectId = require('mongodb').ObjectID; // 이거 필수 
   var objId = new ObjectId();
   const reqData = req.body;
-  const dataAdd = {
-    ...reqData,
-    _id: objId,
-    date: new Date()
-  };
+  // const dataAdd = {
+  //   ...reqData,
+  //   _id: objId,
+  //   date: new Date()
+  // };
   
-  dbCon.db.collection('farm').insertOne(dataAdd, (error, result) => {
-    // console.log('저장완료');
+  console.log(req.body.CorD);
+
+  dbCon.db.collection('login').findOne({ _id: ObjectId(userid) }, (err, result) => {
+   
+    var uesrName = result.name;
+    var uesrEmail = result.email;
+    var userCom = result.company;
+
+    var save = { ...reqData, _id: objId,  company: userCom, userEmail: uesrEmail, userName :  uesrName, date: new Date() }
+
+    dbCon.db.collection('farm').insertOne(save, (error, result) => {
+      // console.log('저장완료');
+    });
+    res.send({farmId:objId});
   });
-  res.send({farmId:objId});
+
 });
 
 // 검색
@@ -59,7 +76,7 @@ router.post('/search/${objId}', (req, res) => {
   // console.log("search");
 
 
-    dbCon.db.collection('member').find({name : req.body.name}).sort({_id : -1}).toArray((err, result) => {
+    dbCon.db.collection('login').find({name : req.body.name}).sort({_id : -1}).toArray((err, result) => {
     res.json(result);
   });
 

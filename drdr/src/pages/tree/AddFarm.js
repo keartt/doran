@@ -12,6 +12,7 @@ import Header from '../fragment/header';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { useParams } from 'react-router-dom';
 
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -45,6 +46,16 @@ const theme = createTheme({
 
 
 function AddFarm() {
+
+ 
+  const params = useParams();
+  var codCheck = true;
+  
+  if(params.CorD === "company"){
+    codCheck = true;
+  }else{
+    codCheck = false;
+  }
 
   const [arr, setArr] = React.useState([]);
 
@@ -116,8 +127,7 @@ function AddFarm() {
             subTitle: subTitle.trim(),
             daedLine: value,
             receiver: receiver.trim(),
-            company: "올포랜드",
-            CorD: true,
+            CorD: codCheck,
             counter: 0
           })
 
