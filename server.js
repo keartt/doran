@@ -10,7 +10,7 @@ const Member = require('./router/member');
 
 const session = require('express-session');
 const login = require('./router/login');
-
+const logout = require('./router/logout');
 
 app.use(express.urlencoded({ extended: true }))
 const bodyParser = require('body-parser');
@@ -21,7 +21,7 @@ const corsOption = {
     optionSuccessStatus: 200,
 };
 app.use(cors(corsOption));
-app.listen(5005, function () {
+app.listen(80, function () {
   console.log(' 접속성공  5005');
 });
 
@@ -49,3 +49,4 @@ app.use("/farm", Farm);
 app.use("/carrot", Carrot);
 app.use("/member", Member);
 app.use('/login', login);
+app.use('/logout', logout)

@@ -12,15 +12,15 @@ const theme = createTheme({
 })
 function Department() {
   const [farm, setFarm] = useState([])
-    const company = '올포랜드'
+  const company = '올포랜드'
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/list/department', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          }, // json형태의 데이터를 서버로 보냅니다.
-          body: JSON.stringify({
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        }, // json형태의 데이터를 서버로 보냅니다.
+        body: JSON.stringify({
           company: company
         })
       })
@@ -30,10 +30,10 @@ function Department() {
     fetchData();
   }, []);
   const farmList = farm.map((farm, i) =>
-  <Link to= {"/ViewFarm/" + farm._id}>
-    <List sx={{ width: "90%", bgcolor: "background.paper" }} key={i}>
-      <ListItem alignItems="flex-start" style={{marginLeft:'5%'}} >
-        <ListItemText
+    <Link to={"/ViewFarm/" + farm._id}>
+      <List sx={{ width: "90%", bgcolor: "background.paper" }} key={i}>
+        <ListItem alignItems="flex-start" style={{ marginLeft: '5%' }} >
+          <ListItemText
             primary={
               <>
                 to {farm.userName}  <br />
@@ -41,13 +41,13 @@ function Department() {
               </>
             }
 
-          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.counter}개 </span> 
-      </ListItem>
-    </List>
+            secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{ color: '#FE9A2E' }}> 🥕 {farm.counter}개 </span>
+        </ListItem>
+      </List>
     </Link>
   )
   return <>
-    <Link to = "/AddFarm/department"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 부서 농장!! </h3></Link >
+    <Link to="/AddFarm/department"> <h3 className='titleName' style={{ marginLeft: '8%' }}> <h1 style={{ display: 'inline' }}>🧑‍🌾</h1> 부서 농장!! </h3></Link >
     <div style={{ clear: "both" }} ></div>
     <ThemeProvider theme={theme}>
       {farmList}
