@@ -7,6 +7,7 @@ const Home = require('./router/home');
 const Farm = require('./router/farm');
 const Carrot = require('./router/Carrot');
 const Member = require('./router/member');
+const IdPw = require('./router/IdPw');
 
 const session = require('express-session');
 const login = require('./router/login');
@@ -49,4 +50,5 @@ app.use("/farm", Farm);
 app.use("/carrot", Carrot);
 app.use("/member", Member);
 app.use('/login', login);
-app.use('/logout', logout)
+app.use('/logout', logout);
+app.use('/idPw', IdPw);

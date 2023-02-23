@@ -64,6 +64,7 @@ function AddFarm() {
   const [value, setValue] = React.useState(new Date());
 
   const [receiver, setReceiver] = useState('');
+  const [receiverName, setReceiverName] = useState('');
   const [subTitle, setSubTitle] = useState('');
   const [recieverCheck, setRecieverCheck] = useState(false);
 
@@ -73,12 +74,6 @@ function AddFarm() {
   var arrName = [];
   var arrEmail = [];
   var arrDepartment = [];
-
-  // const [arrName, setArrName] = useState([]);
-  // const [arrEmail, setArrEmail] = useState([]);
-  // const [arrDepartment, setArrDepartment] = useState([]);
-
-
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -127,6 +122,7 @@ function AddFarm() {
             subTitle: subTitle.trim(),
             daedLine: value,
             receiver: receiver.trim(),
+            receiverName: receiverName,
             CorD: codCheck,
             counter: 0
           })
@@ -153,8 +149,6 @@ function AddFarm() {
     }
   }
 
-
-
   const clicks = function (index) {
 
     var name = document.getElementsByName('reciever');
@@ -163,56 +157,9 @@ function AddFarm() {
 
     setRecieverCheck(true);
     setReceiver(arrEmail[index]);
+    setReceiverName(arrName[index]);
 
   }
-
-/*
-  const useSearch = () => {
-
-    alert(receiver);
-
-    if (receiver === null || receiver.trim() === "") {
-      alert("검색할 농장 주인을 입력하세요.");
-    } else {
-
-
-      useEffect(() => {
-
-        const fetchData = async () => {
-          const response = await fetch('/farm/search', {
-            method: 'POST',
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: receiver
-            })
-          })
-          const json2 = await response.json();
-          setArr(json2);
-          alert(JSON.stringify(json2));
-
-        };
-        fetchData();
-      }, []);
-
-      setArrName([]);
-      setArrEmail([]);
-      setArrDepartment([]);
-
-      const nameList = arr.map((arr, i) =>
-        arrName.push(arr.name)
-      )
-      const emailList = arr.map((arr, i) =>
-        arrEmail.push(arr.email)
-      )
-      const departmentList = arr.map((arr, i) =>
-        arrDepartment.push(arr.department)
-      )
-    }
-  }
-*/
-
 
   // 사람 List
   const renderRow = function (porps) {
@@ -310,7 +257,7 @@ function AddFarm() {
                 </Grid>
 
 
-                <Grid item xs={11}>
+                <Grid item xs={12}>
                   <TextField required id="standard-required" name="reciever" fullWidth sx={{
                     m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FE9A2E' }, "& label.Mui-focused": {
                       color: '#FE9A2E;'
@@ -319,14 +266,14 @@ function AddFarm() {
 
                 </Grid>
 
-                <Grid item xs={1}>
+                {/* <Grid item xs={1}>
 
                   <IconButton variant="contained" id="btnSearch" size="small">
-                  {/* <IconButton variant="contained" id="btnSearch" size="small" onClick={useSearch}> */}
+                  {<IconButton variant="contained" id="btnSearch" size="small" onClick={useSearch}> }
 
                     <SearchIcon />
                   </IconButton>
-                </Grid>
+                </Grid> */}
 
 
                 <Grid item xs={12}>

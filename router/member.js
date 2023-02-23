@@ -21,8 +21,6 @@ router.post('/add', (req, res) => {
   dbCon.db.collection('login').insertOne(dataAdd, (error, result) => {
     if (error) return console.log(error);
    
-
-   
     console.log('저장완료');
   });
 

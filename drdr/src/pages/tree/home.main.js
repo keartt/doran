@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../fragment/header';
+import Header from '../fragment/headerExit';
 import '../../resource/css/main.css';
 import { useState } from "react"
 // 아이콘
@@ -24,6 +24,11 @@ function Home() {
   return (
     <div className="homeContainer">
       <div className='homeCenter'>
+        
+        
+        
+        
+        
         <Header />
         <div className='divMain'>
           <IconButton 

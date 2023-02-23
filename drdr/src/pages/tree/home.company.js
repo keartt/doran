@@ -39,7 +39,7 @@ function Company() {
         <ListItemText
           primary={
             <>
-              to {farm.userName}  <br />
+              to {farm.receiverName}  <br />
               {farm.title}
             </>
           }

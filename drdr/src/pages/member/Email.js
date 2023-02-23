@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../fragment/header';
+import Header from '../fragment/headerBack';
 import '../../resource/css/main.css';
 import '../../resource/css/member/Email.css';
 import TextField from '@mui/material/TextField';

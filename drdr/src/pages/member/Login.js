@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import Header from '../fragment/header';
 import '../../resource/css/main.css';
 import '../../resource/css/member/Login.css';
 import TextField from '@mui/material/TextField';
@@ -42,7 +41,7 @@ function Login() {
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value)
     }
-    
+
     const onPwHandler = (event) => {
         setPassword(event.currentTarget.value)
     }
@@ -50,7 +49,7 @@ function Login() {
     function LoginSuccess() {
         alert('로그인 성공');
         window.location.href = '/home';
-      }
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -63,14 +62,14 @@ function Login() {
         })
             .then((response) => {
                 if (response.status === 200) {
-                  LoginSuccess();
+                    LoginSuccess();
                 } else if (response.status === 401) {
                     alert('농장 주인 맞슈?')
-                  window.location.href = "/login";
+                    window.location.href = "/login";
                 } else {
-                  throw new Error("서버 응답 오류");
+                    throw new Error("서버 응답 오류");
                 }
-              })
+            })
             .catch(error => {
                 console.error(error);
             });
@@ -82,49 +81,54 @@ function Login() {
             <div className='mainCenter'>
 
                 {/* 헤더 부분 */}
-                <Header />
+
+                <div className="mainHeader">
+                    <a id="header1" href="/home">
+                        도란도란
+                    </a>
+                </div>
 
                 <div className='divMain'>
 
                     {/* 여기서 작업 */}
 
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                <img
-                  className="login-image image-1"
-                  src="Rabbit_1.png"
-                  alt="Login"
-                  width="20%"
-                  height="30%"
-                />
-                <img
-                  className="login-image image-2"
-                  src="Rabbit_2.png"
-                  alt="Login"
-                  width="20%"
-                  height="30%"
-                />
-                <img
-                  className="login-image image-3"
-                  src="Rabbit_3.png"
-                  alt="Login"
-                  width="20%"
-                  height="30%"
-                />
-                <img
-                  className="login-image image-4"
-                  src="Rabbit_4.png"
-                  alt="Login"
-                  width="20%"
-                  height="30%"
-                />
-                <img
-                  className="login-image image-5"
-                  src="Rabbit_5.png"
-                  alt="Login"
-                  width="20%"
-                  height="30%"
-                />
-              </div>
+                        <img
+                            className="login-image image-1"
+                            src="Rabbit_1.png"
+                            alt="Login"
+                            width="20%"
+                            height="30%"
+                        />
+                        <img
+                            className="login-image image-2"
+                            src="Rabbit_2.png"
+                            alt="Login"
+                            width="20%"
+                            height="30%"
+                        />
+                        <img
+                            className="login-image image-3"
+                            src="Rabbit_3.png"
+                            alt="Login"
+                            width="20%"
+                            height="30%"
+                        />
+                        <img
+                            className="login-image image-4"
+                            src="Rabbit_4.png"
+                            alt="Login"
+                            width="20%"
+                            height="30%"
+                        />
+                        <img
+                            className="login-image image-5"
+                            src="Rabbit_5.png"
+                            alt="Login"
+                            width="20%"
+                            height="30%"
+                        />
+                    </div>
 
                     <div>
                         <form onSubmit={handleSubmit}>
@@ -138,7 +142,7 @@ function Login() {
                                         }} label="이메일" defaultValue="" variant="standard" />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <TextField required id="standard-required" name="password" value={password} onChange={onPwHandler}  fullWidth sx={{
+                                        <TextField required id="standard-required" type="password" name="password" value={password} onChange={onPwHandler} fullWidth sx={{
                                             m: 1, '& .MuiInput-underline:after': { borderBottomColor: '#FF8000' }, "& label.Mui-focused": {
                                                 color: '#FF8000;'
                                             }
@@ -148,15 +152,14 @@ function Login() {
                                     <Grid item xs={12}>
                                         <Stack spacing={1} direction="row">
                                             <Button type="submit" id="btnLogin" variant="contained" fullWidth theme={theme}>로그인</Button>
-                                            <Button id="btnLogin" variant="contained" fullWidth theme={theme}>카카오 로그인</Button>
                                         </Stack>
                                     </Grid>
                                     <Grid item xs={12}></Grid>
                                     <Grid item xs={12}>
                                         <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2}>
                                             <Button href="/Signup" fullWidth theme={theme}>회원가입</Button>
-                                            <Button href="/Email" fullWidth theme={theme}>이메일 찾기</Button>
-                                            <Button href="/Pw" fullWidth theme={theme}>비밀번호 찾기</Button>
+                                            {/* <Button href="/Email" fullWidth theme={theme}>이메일 찾기</Button> */}
+                                            {/* <Button href="/Pw" fullWidth theme={theme}>비밀번호 찾기</Button> */}
                                         </Stack>
                                     </Grid>
                                 </Grid>

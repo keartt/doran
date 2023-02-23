@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Header from '../fragment/header';
+import Header from '../fragment/headerBack';
 import '../../resource/css/main.css';
 import '../../resource/css/member/Pw_Reset.css';
 import TextField from '@mui/material/TextField';

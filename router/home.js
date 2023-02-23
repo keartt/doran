@@ -7,7 +7,7 @@ const collectionName = 'farm'
 router.post('/company', (req, res) => {
   // const user = req.session.user; // 저장된 세션의 사용자 정보 가져오기
   // console.log(user)
-  console.log('a : ' + req.body.company )
+  // console.log('a : ' + req.body.company )
   dbCon.db.collection('farm').find({company : req.body.company , CorD : true}).toArray((err, result) => {
         res.json(result);
     }); 
@@ -15,16 +15,16 @@ router.post('/company', (req, res) => {
 
 router.post('/department', (req, res) => {
   // req  =  company & CorD 
-  console.log('a : ' + req.body.company )
+  // console.log('a : ' + req.body.company )
   dbCon.db.collection('farm').find({company : req.body.company , CorD : false}).toArray((err, result) => {
-        console.log('r:' +result)
+        // console.log('r:' +result)
         res.json(result);
     }); 
 });
 
 router.post('/my', (req, res) => {
   const user = req.session.user; // 저장된 세션의 사용자 정보 가져오기
-  console.log( user);
+  // console.log( user);
   // const  eeee = user.email;
   // console.log(eeee);
   const receiver = user.email;
@@ -34,7 +34,7 @@ router.post('/my', (req, res) => {
 
   dbCon.db.collection('farm').find({receiver : receiver }).toArray((err, result) => {
     
-    console.log(result)   
+    // console.log(result)   
     res.json(result);
         
     }); 

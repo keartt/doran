@@ -26,19 +26,11 @@ function Header() {
       </a>
 
 
-      <Stack spacing={3} direction="row">
 
       <IconButton style={{ backgroundColor: '#BCF5A9', width: '24px', height: '24px' }} onClick={()=>(window.history.back())} >
         <ChevronLeftIcon style={{ color: 'white', width: '20px', height: '20px' }} />
       </IconButton>
 
-      <IconButton style={{ backgroundColor: '#F78181', width: '24px', height: '24px' }} onClick={handleLogout} >
-        <CloseIcon style={{ color: 'white', width: '20px', height: '20px' }} />
-      </IconButton>
-      </Stack>
-
-
-      
     </div>
   );
 }

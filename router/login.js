@@ -56,7 +56,7 @@ router.post("/", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      console.log('w4')
+      // console.log('w4')
       req.session.user = user; // 사용자 정보를 세션에 저장
       // res.cookie('user', user, { maxAge: 900000, httpOnly: true });
 

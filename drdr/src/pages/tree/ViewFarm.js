@@ -24,6 +24,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import DateRangeIcon from '@mui/icons-material/DateRange';
 
 import { Link } from 'react-router-dom';
 
@@ -88,7 +89,7 @@ function ViewFarm() {
                 <SentimentSatisfiedAltIcon />
               </Grid>
               <Grid item xs={11}>
-                <span id="recipient">{farm.receiver}</span>
+                <span id="recipient">{farm.receiverName} ( {farm.receiver} )</span>
               </Grid>
 
               <Grid item xs={1}>
@@ -97,6 +98,14 @@ function ViewFarm() {
               <Grid item xs={11}>
                 <span id="recipient">{farm.subTitle}</span>
               </Grid>
+
+              <Grid item xs={1}>
+                <DateRangeIcon />
+              </Grid>
+              <Grid item xs={11}>
+                <span id="recipient">{farm.date.substring(0,10 )}</span>
+              </Grid>
+
   
   </>
     
@@ -139,7 +148,7 @@ const carrotInfo = carrot.map((carrot, i) =>
               <Grid item xs={4}>
                 <Stack justifyContent="center" alignItems="center" spacing={2}>
                   {UI[carrot.imageSrc]}
-                  <Link to={"/ViewCarrot/" + carrot._id}> <span>익명의 토끼</span></Link>
+                  <Link to={"/ViewCarrot/" + carrot._id}> <span>{carrot.isAnonymous === true ?"익명의 토끼":carrot.userName}</span></Link>
                 </Stack>
               </Grid>
   
@@ -181,57 +190,7 @@ const carrotInfo = carrot.map((carrot, i) =>
             <Grid container spacing={9}>
 
               {carrotInfo}
-
               
-              {/* <Grid item xs={4}>
-                <Stack justifyContent="center" alignItems="center" spacing={2}>
-                  <Image src={r3} />
-                  <a href='/ViewCarrot'>익명의 토끼</a>
-                </Stack>
-              </Grid>
-              <Grid item xs={4}>
-                <Stack justifyContent="center" alignItems="center" spacing={2}>
-
-                  <Image src={r2} />
-                  <a href='/ViewCarrot'>익명의 토끼</a>
-
-                </Stack>
-              </Grid>
-              <Grid item xs={4}>
-                <Stack justifyContent="center" alignItems="center" spacing={2}>
-
-                  <Image src={r1} />
-                  <a href='/ViewCarrot'>익명의 토끼</a>
-
-                </Stack>
-              </Grid>
-
-              <Grid item xs={4}>
-                <Stack justifyContent="center" alignItems="center" spacing={2}>
-
-                  <Image src={r5} />
-                  <a href='/ViewCarrot'>익명의 토끼</a>
-
-                </Stack>
-              </Grid>
-
-              <Grid item xs={4}>
-                <Stack justifyContent="center" alignItems="center" spacing={2}>
-
-                  <Image src={r4} />
-                  <a href='/ViewCarrot'>익명의 토끼</a>
-
-                </Stack>
-              </Grid>
-
-              <Grid item xs={4}>
-                <Stack justifyContent="center" alignItems="center" spacing={2}>
-
-                  <Image src={r3} />
-                  <a href='/ViewCarrot'>익명의 토끼</a>
-
-                </Stack>
-              </Grid> */}
             </Grid>
           </div>
         </div>
