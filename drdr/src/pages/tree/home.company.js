@@ -49,7 +49,7 @@ function Company() {
     </Link>
   )
   return <>
-    <Link to = "/addFarm/Company"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 회사 농장!! </h3></Link >
+    <Link to = "/AddFarm/company"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 회사 농장!! </h3></Link >
     <div style={{ clear: "both" }} ></div>
     <ThemeProvider theme={theme}>
       {farmList}

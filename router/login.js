@@ -20,7 +20,7 @@ passport.use(
         if (!user) {
           return done(null, false, { message: "존재하지 않는 이메일" });
         }
-        if (password != user.pw) {
+        if (password != user.password) {
           return done(null, false, { message: "비밀번호가 틀렸습니다." });
         }
         return done(null, user);

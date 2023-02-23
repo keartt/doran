@@ -42,7 +42,7 @@ function Department() {
     </Link>
   )
   return <>
-    <Link to = "/addFarm/department"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 부서 농장!! </h3></Link >
+    <Link to = "/AddFarm/department"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 부서 농장!! </h3></Link >
     <div style={{ clear: "both" }} ></div>
     <ThemeProvider theme={theme}>
       {farmList}

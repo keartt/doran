@@ -23,7 +23,7 @@ function App() {
         <Route path="Signup" element={<Signup/>}/>
         <Route path="Email" element={<Email/>}/>
         <Route path="Pw" element={<Pw/>}/>
-        <Route path="AddFarm" element={<AddFarm/>}/>
+        <Route path="/AddFarm/:CorD" element={<AddFarm/>}/>
         <Route path="/ViewFarm/:farmId" element={<ViewFarm/>}/>
         {/* <Route path="AddCarrot" element={<AddCarrot/>}/> */}
         <Route path="ViewCarrot/:carrotId" element={<ViewCarrot/>}/>
