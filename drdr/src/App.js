@@ -7,6 +7,7 @@ import Login from "./pages/member/Login";
 import Signup from "./pages/member/Signup";
 import Email from "./pages/member/Email";
 import Pw from "./pages/member/Pw";
+import Pw_Reset from "./pages/member/Pw_Reset";
 import Home from "./pages/tree/home.main";
 
 import AddCarrot from "./pages/tree/AddCarrot";
@@ -23,6 +24,7 @@ function App() {
         <Route path="Signup" element={<Signup/>}/>
         <Route path="Email" element={<Email/>}/>
         <Route path="Pw" element={<Pw/>}/>
+        <Route path="Pw_Reset" element={<Pw_Reset/>}/>
         <Route path="/AddFarm/:CorD" element={<AddFarm/>}/>
         <Route path="/ViewFarm/:farmId" element={<ViewFarm/>}/>
         {/* <Route path="AddCarrot" element={<AddCarrot/>}/> */}
