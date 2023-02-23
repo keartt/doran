@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 import '../../resource/css/main.css';
 import '../../resource/css/tree/AddFarm.css';
-import Header from '../fragment/header';
+import Header from '../fragment/headerExit';
 import Stack from '@mui/material/Stack';
 
 import r1 from '../../resource/img/r1.png';
