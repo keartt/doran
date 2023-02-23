@@ -12,7 +12,7 @@ const theme = createTheme({
 })
 function Company() {
   const [farm, setFarm] = useState( []  )
-  const company = '올포랜드드'
+  const company = '올포랜드'
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,11 +39,11 @@ function Company() {
         <ListItemText
           primary={
             <>
-              to {farm.receiver}  <br />
+              to {farm.userName}  <br />
               {farm.title}
             </>
           }
-          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개  </span> 
+          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.counter}개  </span> 
       </ListItem>
     </List>
     </Link>

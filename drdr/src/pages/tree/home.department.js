@@ -34,9 +34,14 @@ function Department() {
     <List sx={{ width: "90%", bgcolor: "background.paper" }} key={i}>
       <ListItem alignItems="flex-start" style={{marginLeft:'5%'}} >
         <ListItemText
-            primary={`to ${farm.receiver}<br>${farm.title}`}
+            primary={
+              <>
+                to {farm.userName}  <br />
+                {farm.title}
+              </>
+            }
 
-          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개 </span> 
+          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.counter}개 </span> 
       </ListItem>
     </List>
     </Link>

@@ -45,14 +45,14 @@ function My() {
         <ListItemText
            primary={`${farm.title}`}
 
-          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개 </span> 
+          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.counter}개 </span> 
       </ListItem>
     </List>
     </Link>
   )
   return <>
 
- <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1>  ${farm.receiver} 님의 농장!! </h3> 
+ <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1>  {farm.userName}내 농장!! </h3> 
 
     {/* 내가 심은 밭? 당근 개수? 마이페이지 수정?  */}
     <ThemeProvider theme={theme}>

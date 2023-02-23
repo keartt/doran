@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Test/>}/>
+        <Route path="/" element={<Login/>}/>
 
         <Route path="Login" element={<Login/>}/>
         <Route path="Signup" element={<Signup/>}/>
