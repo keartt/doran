@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { createTheme, IconButton, ThemeProvider } from '@mui/material';
 import r3 from '../../resource/img/r3.png';
 
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { useState } from "react";
 import { useParams } from 'react-router-dom';
 

@@ -12,8 +12,7 @@ const theme = createTheme({
 })
 function Company() {
   const [farm, setFarm] = useState( []  )
-    // 세션에 저장된 회사명,,
-  const company = 'all4'
+  const company = '올포랜드드'
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,16 +33,23 @@ function Company() {
   // res 가져올 값
   // title subTitle receiver count 
   const farmList = farm.map((farm, i) =>
+  <Link to = {"/ViewFarm/" + farm._id}>
     <List sx={{ width: "90%", bgcolor: "background.paper" }} key={i}>
       <ListItem alignItems="flex-start" style={{marginLeft:'5%'}} >
         <ListItemText
-          primary=  {`to ${farm.receiver} : ${farm.title}`}
-          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개 아이디 : {farm._id} </span> 
+          primary={
+            <>
+              to {farm.receiver}  <br />
+              {farm.title}
+            </>
+          }
+          secondary={<React.Fragment>  {farm.subTitle}  </React.Fragment>} /><span style={{color:'#FE9A2E'}}> 🥕 {farm.count}개  </span> 
       </ListItem>
     </List>
+    </Link>
   )
   return <>
-    <Link to = "/작성페이지"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 회사 농장!! </h3></Link >
+    <Link to = "/addFarm/Company"> <h3 className='titleName' style={{marginLeft:'8%'}}> <h1 style={{display:'inline'}}>🧑‍🌾</h1> 회사 농장!! </h3></Link >
     <div style={{ clear: "both" }} ></div>
     <ThemeProvider theme={theme}>
       {farmList}
