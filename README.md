@@ -30,12 +30,12 @@
 <br>
 
 ### 👀 Language & Tools
-<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white">   <!-- 자바 -->
-<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=ffffff"/>          <!-- PostgreSQL-->
-
-
-
-<br>
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=ffffff"/>            <!-- React-->
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=ffffff"/>  <!-- 자바스크립트-->
+<img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=ffffff"/>               <!-- CSS -->
+<img src="https://img.shields.io/badge/mongoDB-47A248?style=flat-square&amp;logo=mongodb&amp;logoColor=white">
+<img src="https://img.shields.io/badge/node.js-339933?style=flat-square&amp;logo=node.js&amp;logoColor=white">
+<br><br>
 
 ### 🍀 Result
 - 로그인<br><br>
