@@ -1,6 +1,11 @@
 
 # 도란도란🥕🧑‍🌾
-<br>
+
+### 👀 Language & Tools
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=ffffff"/>            <!-- React-->
+<img src="https://img.shields.io/badge/express-000000?style=flat-square&amp;logo=express&amp;logoColor=white">
+<img src="https://img.shields.io/badge/mongoDB-47A248?style=flat-square&amp;logo=mongodb&amp;logoColor=white">
+<img src="https://img.shields.io/badge/node.js-339933?style=flat-square&amp;logo=node.js&amp;logoColor=white">
 
 ### 📑 프로젝트 개요
 - 생일등의 기념일에 서로에게 한마디를 남기며 의미있는 하루를 만들 수 있는 직장인 롤링페이퍼 웹
@@ -29,13 +34,6 @@
 
 <br>
 
-### 👀 Language & Tools
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=ffffff"/>            <!-- React-->
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=ffffff"/>  <!-- 자바스크립트-->
-<img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=ffffff"/>               <!-- CSS -->
-<img src="https://img.shields.io/badge/mongoDB-47A248?style=flat-square&amp;logo=mongodb&amp;logoColor=white">
-<img src="https://img.shields.io/badge/node.js-339933?style=flat-square&amp;logo=node.js&amp;logoColor=white">
-<br><br>
 
 ### 🍀 Result
 - 로그인<br><br>
